@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => const SearchScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => const LoginScreen()));
     });
   }
 
