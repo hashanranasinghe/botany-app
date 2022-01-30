@@ -1,3 +1,4 @@
+import 'package:botanyapp/screens/myheaderdrawer.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -5,12 +6,26 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center
-        (child: Text('laththa',
-        style: TextStyle(
-          fontSize: 50,
-        ),)),
+    return  Scaffold(
+      body: const Center(
+        child: Text(
+          "search"
+        ),
+      ),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              MyHeaderDrawer(),
+              _myListDrawer(),
+            ),
+          ),
+        ),
+      ),
     );
+
+  }
+  Widget _myListDrawer(){
+    return Container();
   }
 }
