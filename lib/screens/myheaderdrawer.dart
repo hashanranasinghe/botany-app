@@ -12,7 +12,7 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 200,
+      height: 300,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(

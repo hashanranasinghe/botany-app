@@ -1,3 +1,4 @@
+import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:flutter/material.dart';
 import 'loginbackground.dart';
 
@@ -88,6 +89,7 @@ class _LoginBodyState extends State<LoginBody> {
         if(formKey.currentState!.validate()){
           formKey.currentState!.save();
           print(_userName);
+          Navigator.of(context).pushReplacementNamed(ScreenWidget.routeName);
         }
       },
         child: Text(
@@ -110,10 +112,6 @@ class _LoginBodyState extends State<LoginBody> {
       ),
     );
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -194,7 +192,7 @@ class Validator{
   static String? PasswordValidate(String passwordValue) {
     if(passwordValue.isEmpty){
       return "Password Cannot be Empty";
-    }else if(passwordValue.contains(RegExp(r'[a-zA-Z0-9]')) ){
+    }else if(!passwordValue.contains(RegExp(r'[a-zA-Z0-9]')) ){
       return "Invalid Password";
     }
     return null;
