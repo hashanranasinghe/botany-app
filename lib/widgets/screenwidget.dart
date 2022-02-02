@@ -1,13 +1,14 @@
-
-import '../screens/myheaderdrawer.dart';
+import 'package:botanyapp/screens/deletesearchscreen.dart';
+import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:botanyapp/screens/updatesearchscreen.dart';
+import '../screens/bodies/myheaderdrawer.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/addscreen.dart';
 
 class ScreenWidget extends StatelessWidget {
   Widget child ;
   static const routeName = 'searchScreen';
-  ScreenWidget({required this.child});
+  ScreenWidget({Key? key, required this.child}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -34,17 +35,20 @@ class ScreenWidget extends StatelessWidget {
             children: [
               IconButton( icon: const Icon(Icons.menu,color: Colors.black),
               onPressed: ()=> _scaffoldKey.currentState?.openDrawer(),
-              padding: const EdgeInsets.only(top: 40,left: 20),
+              padding: const EdgeInsets.only(top: 40),
               iconSize: 40,),
-              SizedBox(
+              Container(
                         height: 100,
                         width: 100,
+                        padding: const EdgeInsets.only(top: 20),
                         child:Center(child: Image.asset('assets/images/logo_1.png')),
                     ),
-              const SizedBox(
-                height: 20,
-                width: 50,
-              )
+              IconButton(icon: const Icon(Icons.home,color: Colors.black),
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+              },
+              padding: const EdgeInsets.only(top: 40),
+              iconSize: 40,)
             ],
           ),
           child
@@ -59,12 +63,10 @@ class ScreenWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
-          leading: IconButton(
-            icon: const Icon(Icons.add_box_outlined),
-            onPressed: (){
+          onTap: (){
             Navigator.of(context).pushNamed(AddScreen.routeName);
           },
-          ),
+          leading: const Icon(Icons.update_outlined,color: Colors.black),
           title: const Text('Add',
             style: TextStyle(
               fontFamily: 'Poppins',
@@ -74,9 +76,12 @@ class ScreenWidget extends StatelessWidget {
         ),
         const Divider(thickness: 2,),
 
-        const ListTile(
-          leading: Icon(Icons.update_outlined,color: Colors.black),
-          title: Text('Update',
+        ListTile(
+          onTap: (){
+            Navigator.of(context).pushNamed(UpdateSearchScreen.routeName);
+          },
+          leading:  const Icon(Icons.update_outlined,color: Colors.black),
+          title: const Text('Update',
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
@@ -85,16 +90,19 @@ class ScreenWidget extends StatelessWidget {
         ),
         const Divider(thickness: 2,),
 
-        const ListTile(
+        ListTile(
+          onTap: (){
+            Navigator.of(context).pushNamed(DeleteSearchScreen.routeName);
+          },
           leading: const Icon(Icons.delete_outline_outlined,color: Colors.black),
-          title: Text('Delete',
+          title: const Text('Delete',
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
               fontSize: 25,
             ),),
         ),
-        const Divider(thickness: 2,)
+        const Divider(thickness: 2)
       ],
     );
   }
