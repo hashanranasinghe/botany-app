@@ -1,7 +1,9 @@
 import 'package:botanyapp/screens/addscreen.dart';
+import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/widgets/screenwidget.dart';
+import 'package:botanyapp/screens/updatescreen.dart';
+import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:botanyapp/screens/singpupage.dart';
 import 'package:botanyapp/screens/splashscreen.dart';
 import 'package:device_preview/device_preview.dart';
@@ -39,11 +41,14 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       routes: {
-        SplashScreen.routName: (ctx) => SplashScreen(),
-        ScreenWidget.routeName: (ctx) => SearchScreen(),
-        SignUpScreen.routeName: (ctx) => SignUpScreen(),
-        LoginScreen.routeName: (ctx) => LoginScreen(),
-        AddScreen.routeName: (ctx) => AddScreen(),
+        SplashScreen.routName: (ctx) => const SplashScreen(),
+        SearchScreen.routeName: (ctx) => const SearchScreen(),
+        SignUpScreen.routeName: (ctx) => const SignUpScreen(),
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
+        AddScreen.routeName: (ctx) => const AddScreen(),
+        UpdateScreen.routeName: (ctx) => const UpdateScreen(),
+        UpdateSearchScreen.routeName: (ctx) => const UpdateSearchScreen(),
+        DeleteSearchScreen.routeName: (ctx) => const DeleteSearchScreen(),
       },
     );
   }

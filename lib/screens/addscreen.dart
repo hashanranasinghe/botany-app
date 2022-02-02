@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'addbody.dart';
+import 'bodies/addbody.dart';
 
 class AddScreen extends StatelessWidget {
 
