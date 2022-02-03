@@ -1,3 +1,4 @@
+import 'package:botanyapp/screens/singpupage.dart';
 import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:flutter/material.dart';
 import 'loginbackground.dart';
@@ -19,6 +20,7 @@ class _LoginBodyState extends State<LoginBody> {
   Widget _buildUsernameField(){
     return Container(
       child: TextFormField(
+        autofocus: true,
         maxLength: 50,
         validator: (text){
           return Validator.NameValidate(text!);
@@ -137,7 +139,7 @@ class _LoginBodyState extends State<LoginBody> {
                   _buildPasswordField(),
                  _buildLoginButton(),
               _buildForgetPassword(),
-              _buildCreateAccount(),
+              _buildCreateAccount(context),
             ],
           ),
         ),
@@ -162,14 +164,19 @@ Widget _buildForgetPassword(){
   );
 }
 
-Widget _buildCreateAccount(){
-  return Container(
+Widget _buildCreateAccount(BuildContext context){
+  return SizedBox(
     height: 40,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
-        Text("Don't have an account? "),
-        Text("Create"),
+      children: <Widget>[
+        const Text("Don't have an account? "),
+        TextButton(onPressed: (){
+          Navigator.of(context).pushNamed(SignUpScreen.routeName);
+        }, child: const Text('Create',
+        style: TextStyle(
+          fontFamily: 'Poppins',
+        ),))
       ],
     ),
 

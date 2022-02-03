@@ -1,7 +1,6 @@
 import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';
-import '../screens/bodies/myheaderdrawer.dart';
 import 'package:flutter/material.dart';
 import '../screens/addscreen.dart';
 
@@ -15,13 +14,24 @@ class ScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
     return  Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
           children:  [
-            const DrawerHeader(
-                child: MyHeaderDrawer(),
+             DrawerHeader(
+                 child: Container(
+                   width: double.infinity,
+                   height: 300,
+                   decoration: const BoxDecoration(
+                       image: DecorationImage(
+                         image: AssetImage(
+                             'assets/images/menu.jpg'),
+                         fit: BoxFit.fill,
+                       )
+                   ),
+                 ),
             ),
             _myListDrawer(context),
           ],
@@ -60,6 +70,7 @@ class ScreenWidget extends StatelessWidget {
 
 
   Widget _myListDrawer(BuildContext context){
+    double height = MediaQuery.of(context).size.height;
     return Column(
       children: <Widget>[
         ListTile(
@@ -74,6 +85,7 @@ class ScreenWidget extends StatelessWidget {
               fontSize: 25,
             ),),
         ),
+
         const Divider(thickness: 2,),
 
         ListTile(
@@ -88,6 +100,7 @@ class ScreenWidget extends StatelessWidget {
               fontSize: 25,
             ),),
         ),
+
         const Divider(thickness: 2,),
 
         ListTile(
@@ -102,7 +115,14 @@ class ScreenWidget extends StatelessWidget {
               fontSize: 25,
             ),),
         ),
-        const Divider(thickness: 2)
+
+        const Divider(thickness: 2),
+
+        Padding(padding: EdgeInsets.only(top: height* 0.35)),
+        Positioned(
+          child: SizedBox(
+              height: 150, width: 150,child: Image.asset('assets/images/logo_1.png')),),
+
       ],
     );
   }

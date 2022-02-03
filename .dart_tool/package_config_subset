@@ -146,6 +146,10 @@ shared_preferences_windows
 2.12
 file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.4/
 file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.4/lib/
+simple_animations
+2.14
+file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-4.0.1/
+file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-4.0.1/lib/
 source_span
 2.12
 file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.1/
@@ -180,8 +184,8 @@ file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.1/
 file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.1/lib/
 win32
 2.15
-file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.3.9/
-file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.3.9/lib/
+file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.3.10/
+file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.3.10/lib/
 xdg_directories
 2.12
 file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0/
