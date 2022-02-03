@@ -1,4 +1,5 @@
 import 'package:botanyapp/widgets/screenwidget.dart';
+import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -111,39 +112,45 @@ class _AddBodyState extends State<AddBody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return ScreenWidget(
-      child: Form(
-        key: formKey,
-          child: Container(
-            margin: const EdgeInsets.only(left: 15,right: 15),
+      child: Column(
+        children: [
+          Form(
+            key: formKey,
+              child: Container(
+                margin: const EdgeInsets.only(left: 15,right: 15),
 
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: const BorderRadius.all(Radius.circular(30)),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
 
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
 
-                const Text('Add',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),),
-                _buildBotNameField(),
-                _buildEnglishNameField(),
-                    ListTile(
-                      title: Row(
-                        children: <Widget>[
-                          Expanded(child: (_buildCancelButton())),
-                          Expanded(child: _buildSaveButton()),
-                        ],
-                      ),
-                    ),
-              ],
-            ),
-          )
+                    const Text('Add',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),),
+                    _buildBotNameField(),
+                    _buildEnglishNameField(),
+                        ListTile(
+                          title: Row(
+                            children: <Widget>[
+                              Expanded(child: (_buildCancelButton())),
+                              Expanded(child: _buildSaveButton()),
+                            ],
+                          ),
+                        ),
+                  ],
+                ),
+              )
+          ),
+
+          const WaveWidget(),
+        ],
       ),
     );
   }

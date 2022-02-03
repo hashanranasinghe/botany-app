@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -15,6 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String? _email;
   String? _password;
   String? _confirmEmail;
+  bool _passwordVisible = false;
+  bool _confirmPasswordVisible = false;
   final _form = GlobalKey<FormState>();
 
   @override
@@ -22,10 +23,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
         body: Column(
       children: [
-        Container(
-          child: Image(
-            image: AssetImage('assets/images/signup.jpg'),
-          ),
+        const Image(
+          image: AssetImage('assets/images/signup.jpg'),
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -122,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        autofocus: true,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(5),
@@ -152,7 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
         validator: (String? value) {
-          final Pattern =
+          const Pattern =
               r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
           final regExp = RegExp(Pattern);
           if (value!.isEmpty) {
@@ -171,16 +171,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPassword() {
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        obscureText: !_passwordVisible,
         keyboardType: TextInputType.visiblePassword,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(5),
             hintText: "Password",
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          suffixIcon: IconButton(
+            icon: Icon(
+                _passwordVisible
+                    ? Icons.visibility
+                    : Icons.visibility_off
+            ),
+            color: Colors.black,
+            onPressed: (){
+              setState(() {
+                _passwordVisible = !_passwordVisible;
+              });
+            },
+          ),
+        ),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Password can\'t be empty';
@@ -194,15 +209,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildConfirmPassword() {
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        obscureText: !_confirmPasswordVisible,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(5),
-            hintText: "Comfirm Password",
+            hintText: "Confirm Password",
             border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+
+          suffixIcon: IconButton(
+            icon: Icon(
+                _confirmPasswordVisible
+                    ? Icons.visibility
+                    : Icons.visibility_off
+            ),
+            color: Colors.black,
+            onPressed: (){
+              setState(() {
+                _confirmPasswordVisible = !_confirmPasswordVisible;
+              });
+            },
+          ),
+
+
+        ),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Pleace confirm password';
