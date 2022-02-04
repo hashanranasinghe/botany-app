@@ -1,3 +1,5 @@
+import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:flutter/material.dart';
 import 'loginbackground.dart';
 
@@ -9,20 +11,19 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String? _userName;
   String? _password;
   bool _passwordVisible = false;
 
-  Widget _buildUsernameField(){
+  Widget _buildUsernameField() {
     return Container(
       child: TextFormField(
         maxLength: 50,
-        validator: (text){
+        validator: (text) {
           return Validator.NameValidate(text!);
         },
-        onSaved: (text){
+        onSaved: (text) {
           _userName = text;
         },
         textAlign: TextAlign.center,
@@ -36,19 +37,19 @@ class _LoginBodyState extends State<LoginBody> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 40),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
     );
   }
 
-  Widget _buildPasswordField(){
+  Widget _buildPasswordField() {
     return Container(
       child: TextFormField(
         maxLength: 8,
         maxLines: 1,
-        validator: (text){
+        validator: (text) {
           return Validator.PasswordValidate(text!);
         },
-        onSaved: (text){
+        onSaved: (text) {
           _password = text;
         },
         obscureText: !_passwordVisible,
@@ -63,12 +64,9 @@ class _LoginBodyState extends State<LoginBody> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
           suffixIcon: IconButton(
             icon: Icon(
-                _passwordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off
-            ),
+                _passwordVisible ? Icons.visibility : Icons.visibility_off),
             color: Colors.black,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 _passwordVisible = !_passwordVisible;
               });
@@ -76,20 +74,22 @@ class _LoginBodyState extends State<LoginBody> {
           ),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 40),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
     );
   }
 
-  Widget _buildLoginButton(){
+  Widget _buildLoginButton() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 40),
-      child: TextButton(onPressed: (){
-        if(formKey.currentState!.validate()){
-          formKey.currentState!.save();
-          print(_userName);
-        }
-      },
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      child: TextButton(
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
+            print(_userName);
+            Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+          }
+        },
         child: Text(
           "Login".toUpperCase(),
           style: const TextStyle(
@@ -103,17 +103,10 @@ class _LoginBodyState extends State<LoginBody> {
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)
-                )
-            )
-        ),
+                    borderRadius: BorderRadius.circular(30)))),
       ),
     );
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -125,19 +118,21 @@ class _LoginBodyState extends State<LoginBody> {
           size: size,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:  <Widget>[
+            children: <Widget>[
               const SizedBox(
                 height: 100,
               ),
-               const Text('Login',
+              const Text(
+                'Login',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
-                ),),
-                  _buildUsernameField(),
-                  _buildPasswordField(),
-                 _buildLoginButton(),
+                ),
+              ),
+              _buildUsernameField(),
+              _buildPasswordField(),
+              _buildLoginButton(),
               _buildForgetPassword(),
               _buildCreateAccount(),
             ],
@@ -148,9 +143,7 @@ class _LoginBodyState extends State<LoginBody> {
   }
 }
 
-
-
-Widget _buildForgetPassword(){
+Widget _buildForgetPassword() {
   return Container(
     alignment: Alignment.bottomRight,
     padding: const EdgeInsets.only(right: 40),
@@ -164,7 +157,7 @@ Widget _buildForgetPassword(){
   );
 }
 
-Widget _buildCreateAccount(){
+Widget _buildCreateAccount() {
   return Container(
     height: 40,
     child: Row(
@@ -174,32 +167,27 @@ Widget _buildCreateAccount(){
         Text("Create"),
       ],
     ),
-
   );
 }
 
-class Validator{
-  static String? NameValidate(String value){
-    if(value.isEmpty){
+class Validator {
+  static String? NameValidate(String value) {
+    if (value.isEmpty) {
       return "Name cannot be Empty";
-    }else if(!value.contains(RegExp(r'[A-z]'))){
+    } else if (!value.contains(RegExp(r'[A-z]'))) {
       return "Invalid Name.";
-    }else if(value.length<5){
+    } else if (value.length < 5) {
       return "Invalid Name.";
     }
     return null;
   }
 
-
   static String? PasswordValidate(String passwordValue) {
-    if(passwordValue.isEmpty){
+    if (passwordValue.isEmpty) {
       return "Password Cannot be Empty";
-    }else if(passwordValue.contains(RegExp(r'[a-zA-Z0-9]')) ){
+    } else if (!passwordValue.contains(RegExp(r'[a-zA-Z0-9]'))) {
       return "Invalid Password";
     }
     return null;
   }
-
 }
-
-

@@ -1,30 +1,30 @@
 [
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_launch_background.xml.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_launch_background.xml.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
+        "merged": "D:\\botany-app\\botany-app\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\botany-app\\botany-app\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }
 ]

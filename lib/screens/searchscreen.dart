@@ -1,31 +1,30 @@
-import 'package:botanyapp/screens/myheaderdrawer.dart';
+import 'package:botanyapp/widgets/drawer_widget.dart';
+import 'package:botanyapp/widgets/screenwidget.dart';
+import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  static const routeName = 'search_screen';
+  SearchScreen({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: const Center(
-        child: Text(
-          "search"
-        ),
+    return Scaffold(
+      key: _scaffoldKey,
+      drawer: DrawerWidget(
+        scaffoldKey: _scaffoldKey,
       ),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              MyHeaderDrawer(),
-              _myListDrawer(),
-            ),
-          ),
-        ),
+      body: Column(
+        children: [
+          TopScreenWidget(
+              scaffoldKey: _scaffoldKey,
+              topLeft: SizedBox(
+                height: 50,
+                width: 50,
+              ))
+        ],
       ),
     );
-
-  }
-  Widget _myListDrawer(){
-    return Container();
   }
 }
