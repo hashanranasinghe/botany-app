@@ -315,7 +315,7 @@
     },
     {
       "name": "xdg_directories",
-      "rootUri": "file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0",
+      "rootUri": "file:///C:/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -326,7 +326,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-02-02T17:36:35.804502Z",
+  "generated": "2022-02-04T07:43:23.337265Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }
