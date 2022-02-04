@@ -9,8 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-
- // runApp(const MyApp()
+  // runApp(const MyApp()
 
   //   DevicePreview(
   //   enabled: !kReleaseMode,
@@ -22,7 +21,6 @@ void main() {
     //   enabled: !kReleaseMode,
     //   builder: (context) => const MyApp(), // Wrap your app
     // ),
-
   );
 }
 
@@ -40,7 +38,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         SplashScreen.routName: (ctx) => SplashScreen(),
-        ScreenWidget.routeName: (ctx) => SearchScreen(),
+        SearchScreen.routeName: (ctx) => SearchScreen(),
         SignUpScreen.routeName: (ctx) => SignUpScreen(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
         AddScreen.routeName: (ctx) => AddScreen(),
