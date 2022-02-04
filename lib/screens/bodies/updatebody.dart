@@ -1,18 +1,18 @@
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
+import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
 
-class AddBody extends StatefulWidget {
-  const AddBody({required this.scaffoldKey});
+class UpdateBody extends StatefulWidget {
+  UpdateBody({required this.scaffoldKey});
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
-  _AddBodyState createState() => _AddBodyState();
+  _UpdateBodyState createState() => _UpdateBodyState();
 }
 
-class _AddBodyState extends State<AddBody> {
+class _UpdateBodyState extends State<UpdateBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Widget _buildBotNameField() {
@@ -53,7 +53,7 @@ class _AddBodyState extends State<AddBody> {
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildUpdateButton() {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       width: double.infinity,
@@ -61,7 +61,7 @@ class _AddBodyState extends State<AddBody> {
       child: TextButton(
         onPressed: () {},
         child: const Text(
-          'Save',
+          'Update',
           style: TextStyle(
             fontSize: 20,
             fontFamily: 'Poppins',
@@ -105,7 +105,6 @@ class _AddBodyState extends State<AddBody> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       child: Column(
         children: [
@@ -140,7 +139,7 @@ class _AddBodyState extends State<AddBody> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             const Text(
-                              'Add',
+                              'Update',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.bold,
@@ -153,7 +152,7 @@ class _AddBodyState extends State<AddBody> {
                               title: Row(
                                 children: <Widget>[
                                   Expanded(child: (_buildCancelButton())),
-                                  Expanded(child: _buildSaveButton()),
+                                  Expanded(child: _buildUpdateButton()),
                                 ],
                               ),
                             ),
@@ -164,6 +163,9 @@ class _AddBodyState extends State<AddBody> {
                   )),
             ),
           ),
+          const Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: WaveWidget()),
         ],
       ),
     );

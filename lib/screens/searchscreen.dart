@@ -1,6 +1,6 @@
 import 'package:botanyapp/widgets/drawer_widget.dart';
-import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
+import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -19,10 +19,14 @@ class SearchScreen extends StatelessWidget {
         children: [
           TopScreenWidget(
               scaffoldKey: _scaffoldKey,
-              topLeft: SizedBox(
+              topLeft: const SizedBox(
                 height: 50,
                 width: 50,
-              ))
+              )),
+        const Expanded(
+              child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: WaveWidget())),
         ],
       ),
     );

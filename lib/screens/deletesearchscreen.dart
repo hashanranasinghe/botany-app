@@ -12,8 +12,6 @@ class DeleteSearchScreen extends StatefulWidget {
 class _DeleteSearchScreenState extends State<DeleteSearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: DeleteSearchBody(),
-    );
+    return DeleteSearchBody();
   }
 }

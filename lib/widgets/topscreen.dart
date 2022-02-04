@@ -14,6 +14,7 @@ class TopScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Row(
@@ -32,11 +33,12 @@ class TopScreenWidget extends StatelessWidget {
               child: SizedBox(
                 height: 100,
                 width: 100,
-                child: Center(child: Image.asset('assets/images/logo_1.png')),
+                child: Center(
+
+                    child: Image.asset('assets/images/logo_1.png')),
               ),
             ),
-            topLeft
-
+            topLeft,
             // IconButton(onPressed: () {}, icon: Icon(Icons.home))
           ],
         ),

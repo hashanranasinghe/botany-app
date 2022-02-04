@@ -1,15 +1,59 @@
-import 'package:botanyapp/widgets/screenwidget.dart';
+
+import 'package:botanyapp/widgets/drawer_widget.dart';
+import 'package:botanyapp/widgets/topscreen.dart';
+import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DeleteSearchBody extends StatefulWidget {
-  const DeleteSearchBody({Key? key}) : super(key: key);
+import '../searchscreen.dart';
+
+class DeleteSearchBody extends StatelessWidget {
+  DeleteSearchBody({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  _DeleteSearchBodyState createState() => _DeleteSearchBodyState();
-}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      key: _scaffoldKey,
+      drawer: DrawerWidget(
+        scaffoldKey: _scaffoldKey,
+      ),
+      body: Column(
+        children: [
+          TopScreenWidget(
+              scaffoldKey: _scaffoldKey,
+              topLeft: Padding(
+                padding: const EdgeInsets.only(top: 30, right: 10),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, SearchScreen.routeName);
+                    },
+                    icon: const Icon(Icons.home)),
+              )),
+          Container(
+            padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildTopic(),
+                _buildSearchBar(),
 
-class _DeleteSearchBodyState extends State<DeleteSearchBody> {
+
+              ],
+            ),
+          ),
+          const Expanded(
+            child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: WaveWidget()),
+          ),
+
+        ],
+      ),
+    );
+  }
 
   // Widget _buildSearchfield(){
   //   return Container(
@@ -40,11 +84,11 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
             color: Colors.black,
           ),
           Text('Delete',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),),
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),),
         ],
       ),
     );
@@ -65,19 +109,5 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return ScreenWidget(
-      child: Container(
-        padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildTopic(),
-            _buildSearchBar(),
-          ],
-        ),
-      ),
-    );
-  }
+
 }

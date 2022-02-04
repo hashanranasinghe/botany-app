@@ -1,15 +1,51 @@
-import 'package:botanyapp/widgets/screenwidget.dart';
+
+import 'package:botanyapp/widgets/drawer_widget.dart';
+import 'package:botanyapp/widgets/topscreen.dart';
+import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class UpdateSearchBody extends StatefulWidget {
-  const UpdateSearchBody({Key? key}) : super(key: key);
+class UpdateSearchBody extends StatelessWidget {
+  UpdateSearchBody({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  _UpdateSearchBodyState createState() => _UpdateSearchBodyState();
-}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      key: _scaffoldKey,
+      drawer: DrawerWidget(
+        scaffoldKey: _scaffoldKey,
+      ),
+      body: Column(
+        children: [
+          TopScreenWidget(
 
-class _UpdateSearchBodyState extends State<UpdateSearchBody> {
+              scaffoldKey: _scaffoldKey,
+              topLeft: const SizedBox(
+                height: 50,
+                width: 50,
+              )),
+
+          Container(
+            padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildTopic(),
+                _buildSearchBar(),
+              ],
+            ),
+          ),
+          const Expanded(
+            child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: WaveWidget()),
+          ),
+        ],
+      ),
+    );
+  }
 
   // Widget _buildSearchfield(){
   //   return Container(
@@ -35,7 +71,6 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
         children: const [
-
           Icon(
             Icons.update_outlined,
             color: Colors.black,
@@ -51,34 +86,22 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
     );
   }
 
- Widget _buildSearchBar(){
-   return CupertinoSearchTextField(
-     prefixInsets: const EdgeInsets.only(left: 20),
-     itemSize: 25,
-     autofocus: true,
-     style: const TextStyle(
-       fontFamily: 'Poppins',
-     ),
-     decoration: BoxDecoration(
-       borderRadius: BorderRadius.circular(30),
-       color: Colors.black12,
-     ),
-   );
- }
 
-  @override
-  Widget build(BuildContext context) {
-    return ScreenWidget(
-      child: Container(
-        padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildTopic(),
-            _buildSearchBar(),
-          ],
-        ),
+
+  Widget _buildSearchBar(){
+    return CupertinoSearchTextField(
+      prefixInsets: const EdgeInsets.only(left: 20),
+      itemSize: 25,
+      autofocus: true,
+      style: const TextStyle(
+        fontFamily: 'Poppins',
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.black12,
       ),
     );
   }
+
+
 }

@@ -1,5 +1,7 @@
 import 'package:botanyapp/screens/addscreen.dart';
-import 'package:botanyapp/screens/myheaderdrawer.dart';
+import 'package:botanyapp/screens/deletesearchscreen.dart';
+import 'package:botanyapp/screens/updatescreen.dart';
+import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -8,11 +10,22 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
-            child: MyHeaderDrawer(),
+          DrawerHeader(
+            child: Container(
+              width: double.infinity,
+              height: 300,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'assets/images/menu.jpg'),
+                    fit: BoxFit.fill,
+                  )
+              ),
+            ),
           ),
           Column(
             children: <Widget>[
@@ -42,7 +55,7 @@ class DrawerWidget extends StatelessWidget {
 
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushNamed(AddScreen.routeName);
+                  Navigator.of(context).pushNamed(UpdateSearchScreen.routeName);
                 },
                 leading: const Icon(Icons.update_outlined, color: Colors.black),
                 title: const Text(
@@ -58,10 +71,13 @@ class DrawerWidget extends StatelessWidget {
                 thickness: 2,
               ),
 
-              const ListTile(
+              ListTile(
+                onTap: (){
+                  Navigator.of(context).pushNamed(DeleteSearchScreen.routeName);
+                },
                 leading:
-                    Icon(Icons.delete_outline_outlined, color: Colors.black),
-                title: Text(
+                    const Icon(Icons.delete_outline_outlined, color: Colors.black),
+                title: const Text(
                   'Delete',
                   style: TextStyle(
                     fontFamily: 'Poppins',
@@ -72,7 +88,12 @@ class DrawerWidget extends StatelessWidget {
               ),
               const Divider(
                 thickness: 2,
-              )
+              ),
+              Padding(padding: EdgeInsets.only(top: height* 0.3)),
+              Positioned(
+                child: SizedBox(
+                    height: 150, width: 150,child: Image.asset('assets/images/logo_1.png')),),
+
             ],
           ),
         ],

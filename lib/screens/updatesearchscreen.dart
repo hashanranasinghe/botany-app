@@ -13,8 +13,6 @@ class UpdateSearchScreen extends StatefulWidget {
 class _UpdateSearchScreenState extends State<UpdateSearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: UpdateSearchBody(),
-    );
+    return UpdateSearchBody();
   }
 }

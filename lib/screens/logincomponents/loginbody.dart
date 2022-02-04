@@ -1,5 +1,4 @@
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:flutter/material.dart';
 import 'loginbackground.dart';
 
