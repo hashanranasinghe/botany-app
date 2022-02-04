@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:botanyapp/widgets/screenwidget.dart';
 import 'package:botanyapp/screens/singpupage.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
     });
   }
 
