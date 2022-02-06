@@ -1,8 +1,10 @@
-
+import 'package:botanyapp/models/word.dart';
+import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../searchscreen.dart';
 
@@ -15,15 +17,78 @@ class AddBody extends StatefulWidget {
 }
 
 class _AddBodyState extends State<AddBody> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController _textController = TextEditingController();
+  final GlobalKey<FormState> _form = GlobalKey<FormState>();
+  //final TextEditingController _textController = TextEditingController();
+  final _engFocusNode = FocusNode();
+  final _sinFocusNode = FocusNode();
 
-  Widget _buildBotNameField(){
+  var _editedWord = Word(engName: '', sinName: '', id: null);
+  @override
+  void dispose() {
+    _engFocusNode.dispose();
+    _sinFocusNode.dispose();
+
+    super.dispose();
+  }
+
+  Future<void> _saveForm() async {
+    bool isValidate = _form.currentState!.validate();
+    if (!isValidate) {
+      return;
+    }
+    _form.currentState!.save();
+    // setState(() {
+    //   _isLoading = true;
+    // });
+    // if (_editedProduct.id != null) {
+    //   await Provider.of<Products>(context, listen: false)
+    //       .updateProduct(_editedProduct.id, _editedProduct);
+    // } else {
+    //   try {
+    Provider.of<Words>(context, listen: false).addWord(_editedWord);
+    // } catch (error) {
+    //   await showDialog<Null>(
+    //       context: context,
+    //       builder: (ctx) => AlertDialog(
+    //             title: Text('An error occured!'),
+    //             content: Text('Something went wrong'),
+    //             actions: [
+    //               TextButton(
+    //                   onPressed: () {
+    //                     Navigator.of(ctx).pop();
+    //                   },
+    //                   child: Text('Okay'))
+    //             ],
+    //           ));
+    // }
+    //  }
+
+    // setState(() {
+    //   _isLoading = false;
+    // });
+    Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+  }
+
+  Widget _buildBotNameField() {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: TextFormField(
-        controller: _textController,
+        //controller: _textController,
         textAlign: TextAlign.center,
+        onFieldSubmitted: (_) {
+          FocusScope.of(context).requestFocus(_sinFocusNode);
+        },
+        textInputAction: TextInputAction.next,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Please enter the botanical name';
+          }
+          return null;
+        },
+        onSaved: (value) {
+          _editedWord = Word(
+              engName: value, sinName: _editedWord.engName, id: _editedWord.id);
+        },
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(5),
           hintStyle: const TextStyle(
@@ -34,80 +99,95 @@ class _AddBodyState extends State<AddBody> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 40),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
     );
   }
 
-  Widget _buildEnglishNameField(){
+  Widget _buildEnglishNameField() {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: TextFormField(
-        controller: _textController,
+        //controller: _textController,
         textAlign: TextAlign.center,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Please enter the sinhala name';
+          }
+          return null;
+        },
+        onSaved: (value) {
+          _editedWord = Word(
+              engName: _editedWord.engName, sinName: value, id: _editedWord.id);
+        },
+        onFieldSubmitted: (_) {
+          _saveForm();
+        },
+        focusNode: _sinFocusNode,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(5),
           hintStyle: const TextStyle(
             fontFamily: 'Poppins',
             fontSize: 20,
           ),
-          hintText: "English Name",
+          hintText: "sinhala name",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
         ),
+        textInputAction: TextInputAction.done,
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 40),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
     );
   }
-  
-  Widget _buildSaveButton(){
+
+  Widget _buildSaveButton() {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: TextButton(
-        onPressed: (){}, child: const Text('Save',
-        style: TextStyle(
-          fontSize: 20,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+        onPressed: () {
+          _saveForm();
+        },
+        child: const Text(
+          'Save',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-      ),
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)
-                )
-            ),
+          backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
         ),
       ),
     );
   }
 
-  Widget _buildCancelButton(){
+  Widget _buildCancelButton() {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: TextButton(
-        onPressed: (){
-          _textController.clear();
-        }, child: const Text('Cancel',
-        style: TextStyle(
-          fontSize: 20,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+        onPressed: () {
+          // _textController.clear();
+        },
+        child: const Text(
+          'Cancel',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-      ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)
-                )
-            )
-        ),
+                    borderRadius: BorderRadius.circular(30)))),
       ),
     );
   }
@@ -131,7 +211,7 @@ class _AddBodyState extends State<AddBody> {
         Expanded(
           child: SingleChildScrollView(
             child: Form(
-                key: formKey,
+                key: _form,
                 child: Column(
                   children: [
                     const SizedBox(
@@ -142,7 +222,7 @@ class _AddBodyState extends State<AddBody> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black),
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(30)),
+                            const BorderRadius.all(Radius.circular(30)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -173,11 +253,8 @@ class _AddBodyState extends State<AddBody> {
           ),
         ),
         const Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: WaveWidget()),
+            alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
       ],
-
-
     );
   }
 }
