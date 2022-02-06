@@ -2,6 +2,7 @@ import 'package:botanyapp/widgets/drawer_widget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class SearchScreen extends StatelessWidget {
   static const routeName = 'search_screen';
@@ -23,6 +24,7 @@ class SearchScreen extends StatelessWidget {
                 height: 50,
                 width: 50,
               )),
+
         const Expanded(
               child: Align(
                   alignment: FractionalOffset.bottomCenter,
