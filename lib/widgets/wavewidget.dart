@@ -10,35 +10,37 @@ class WaveWidget extends StatefulWidget {
 class _WaveWidgetState extends State<WaveWidget> {
   @override
   Widget build(BuildContext context) {
-      return RotatedBox(
-        quarterTurns: 2,
-        child: Stack(
-          children: [
-            Opacity(opacity: 0.5,
+    return RotatedBox(
+      quarterTurns: 2,
+      child: Stack(
+        children: [
+          Opacity(
+            opacity: 0.5,
             child: ClipPath(
               clipper: WaveClipper(),
               child: Container(
                 color: const Color(0Xff00bdff),
-                height: 200,
-              ),
-            ),),
-        ClipPath(
-          clipper: WaveClipper(),
-          child: Container(
-            color: const Color(0Xff2a74dd),
-            height: 170,
-          ),
-        ),
-            ClipPath(
-              clipper: WaveClipper(),
-              child: Container(
-                color: const Color(0Xff012766),
-                height: 140,
+                height: 170,
               ),
             ),
-          ],
-        ),
-      );
+          ),
+          ClipPath(
+            clipper: WaveClipper(),
+            child: Container(
+              color: const Color(0Xff2a74dd),
+              height: 140,
+            ),
+          ),
+          ClipPath(
+            clipper: WaveClipper(),
+            child: Container(
+              color: const Color(0Xff012766),
+              height: 110,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

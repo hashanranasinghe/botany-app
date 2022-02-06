@@ -1,3 +1,4 @@
+import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
@@ -9,6 +10,7 @@ import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   // runApp(const MyApp()
@@ -32,22 +34,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Words(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SplashScreen(),
+        routes: {
+          SplashScreen.routName: (ctx) => const SplashScreen(),
+          SearchScreen.routeName: (ctx) => SearchScreen(),
+          SignUpScreen.routeName: (ctx) => const SignUpScreen(),
+          LoginScreen.routeName: (ctx) => const LoginScreen(),
+          AddScreen.routeName: (ctx) => AddScreen(),
+          DeleteSearchScreen.routeName: (ctx) => const DeleteSearchScreen(),
+          UpdateSearchScreen.routeName: (ctx) => const UpdateSearchScreen(),
+          UpdateScreen.routeName: (ctx) => UpdateScreen(),
+        },
       ),
-      home: const SplashScreen(),
-      routes: {
-        SplashScreen.routName: (ctx) => const SplashScreen(),
-        SearchScreen.routeName: (ctx) => SearchScreen(),
-        SignUpScreen.routeName: (ctx) => const SignUpScreen(),
-        LoginScreen.routeName: (ctx) => const LoginScreen(),
-        AddScreen.routeName: (ctx) => AddScreen(),
-        DeleteSearchScreen.routeName: (ctx) => const DeleteSearchScreen(),
-        UpdateSearchScreen.routeName: (ctx) => const UpdateSearchScreen(),
-        UpdateScreen.routeName: (ctx) => UpdateScreen(),
-      },
     );
   }
 }

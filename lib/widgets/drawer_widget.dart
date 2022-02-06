@@ -90,13 +90,9 @@ class DrawerWidget extends StatelessWidget {
                 thickness: 2,
               ),
               Padding(padding: EdgeInsets.only(top: height* 0.3)),
-              Stack(
-                children: [
-                        Positioned(
-                  child: SizedBox(
-                        height: 150, width: 150,child: Image.asset('assets/images/logo_1.png')),),
-                      ],
-              ),
+              Positioned(
+                child: SizedBox(
+                    height: 150, width: 150,child: Image.asset('assets/images/logo_1.png')),),
 
             ],
           ),

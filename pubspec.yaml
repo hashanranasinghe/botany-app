@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   device_preview: ^1.0.0
   simple_animations: ^4.0.1
-  toggle_switch: ^1.4.0
 
 dev_dependencies:
   flutter_test:
