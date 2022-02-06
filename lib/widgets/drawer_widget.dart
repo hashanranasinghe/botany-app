@@ -2,6 +2,7 @@ import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/updatescreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -20,11 +21,9 @@ class DrawerWidget extends StatelessWidget {
               height: 300,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/menu.jpg'),
-                    fit: BoxFit.fill,
-                  )
-              ),
+                image: AssetImage('assets/images/menu.jpg'),
+                fit: BoxFit.fill,
+              )),
             ),
           ),
           Column(
@@ -72,11 +71,11 @@ class DrawerWidget extends StatelessWidget {
               ),
 
               ListTile(
-                onTap: (){
+                onTap: () {
                   Navigator.of(context).pushNamed(DeleteSearchScreen.routeName);
                 },
-                leading:
-                    const Icon(Icons.delete_outline_outlined, color: Colors.black),
+                leading: const Icon(Icons.delete_outline_outlined,
+                    color: Colors.black),
                 title: const Text(
                   'Delete',
                   style: TextStyle(
@@ -89,11 +88,17 @@ class DrawerWidget extends StatelessWidget {
               const Divider(
                 thickness: 2,
               ),
-              Padding(padding: EdgeInsets.only(top: height* 0.3)),
-              Positioned(
-                child: SizedBox(
-                    height: 150, width: 150,child: Image.asset('assets/images/logo_1.png')),),
-
+              Padding(padding: EdgeInsets.only(top: height * 0.3)),
+              Stack(
+                children: [
+                  Positioned(
+                    child: SizedBox(
+                        height: 150,
+                        width: 150,
+                        child: Image.asset('assets/images/logo_1.png')),
+                  ),
+                ],
+              ),
             ],
           ),
         ],
