@@ -1,114 +1,69 @@
+import 'package:botanyapp/models/word.dart';
 import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/widgets/drawer_widget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = 'search_screen';
-  const SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<bool> isSelected = [true , false];
   var _isInit = true;
   var _isLoading = false;
+  List<Word> _words = [];
+  List<Word> _filterdWords = [];
   String? sinhalaWord;
-
-  List allResult = [];
-  List resultList = [];
-  List finalResult = [];
-
-
-
-
+  var _toggleIndex = 0;
   @override
   void didChangeDependencies() {
     if (_isInit) {
       setState(() {
         _isLoading = true;
-
-
       });
 
-      Provider.of<Words>(context).fetchAndSetProduct().then((_) {
+      var wordlist = Provider.of<Words>(context).fetchAndSetProduct().then((_) {
         setState(() {
           _isLoading = false;
-
+          _words = _filterdWords =
+              Provider.of<Words>(context, listen: false).wordslist;
         });
       });
     }
+
     _isInit = false;
     super.didChangeDependencies();
   }
 
+  void _filterMethod(value) {
+    setState(() {
+      _filterdWords = _words
+          .where((word) => _toggleIndex == 0
+              ? word.engName!.toLowerCase().contains(value.toLowerCase())
+              : word.sinName!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  TextEditingController searchController = TextEditingController();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    searchController.addListener(_onSearchChange);
-  }
-
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    searchController.removeListener(_onSearchChange);
-    searchController.dispose();
-    super.dispose();
-  }
-  _onSearchChange(){
-    searchResult();
-    print(searchController.text);
-  }
-
-  searchResult(){
-    List showResult= [];
-    final sWord = Provider.of<Words>(context,listen: false).wordslist;
-    if(searchController.text!=""){
-
-      for (int i = 0; i < sWord.length; ++i) {
-        var item = sWord[i].engName!.toLowerCase();
-
-        if (item.contains(searchController.text.toLowerCase())) {
-          showResult.add(item);
-        }
-      }
-
-    }else{
-      showResult = List.from(allResult);
-    }
-    setState(() {
-      resultList = showResult;
-
-  });
-
-  }
-
-
+  final searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final words = Provider.of<Words>(context);
 
-    final words = Provider.of<Words>(context,listen: false);
-
-    setState(() {
-      allResult = words.wordslist;
-    });
-
-    searchResult();
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
+      resizeToAvoidBottomInset: false,
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey,
       ),
@@ -127,53 +82,34 @@ class _SearchScreenState extends State<SearchScreen> {
                   Container(
                     height: 120,
                     margin: const EdgeInsets.only(
-                        left: 15,right: 15, top: 15, bottom: 15),
+                        left: 15, right: 15, top: 15, bottom: 15),
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xff707070)),
+                      border: Border.all(color: Color(0xff707070)),
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Column(
                       children: [
-                        SizedBox(
-                          //width: double.infinity,
-                          // child: ToggleSwitch(
-                          //   initialLabelIndex: 0,
-                          //   totalSwitches: 2,
-                          //   activeBgColor: const [Color(0xFF012766)],
-                          //   fontSize: 20,
-                          //   minHeight: 50,
-                          //   minWidth: (double.infinity - 9.3),
-                          //   //cornerRadius: 30,
-                          //   inactiveBgColor: Colors.white,
-                          //   borderWidth: 1,
-                          //   borderColor: const [Color(0xff707070)],
-                          //   labels: const ['English', 'Sinhala'],
-                          //   onToggle: (index) {},
-                          // ),
-                          child: ToggleButtons(
-                            children: const [
-                              Text('English'),
-                              Text('Sinhala'),
-                            ],
-                            fillColor: const Color(0xFF012766),
-                            selectedColor: Colors.white,
-                            borderColor: const Color(0xff707070),
-                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30) ),
-                            borderWidth: 1,
-                            constraints: BoxConstraints(minWidth: MediaQuery.of(context).size.width - 214,minHeight: 49),
-                            isSelected: isSelected,
-                            onPressed: (int newIndex){
-                              setState(() {
-                                for(int index = 0;index < isSelected.length;index++){
-                                  if(index == newIndex){
-                                    isSelected[index] = true;
-                                  }else{
-                                    isSelected[index]=false;
-                                  }
-                                }
-                              });
-
-                            },
+                        Expanded(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ToggleSwitch(
+                              initialLabelIndex: _toggleIndex,
+                              totalSwitches: 2,
+                              activeBgColor: [Color(0xFF012766)],
+                              fontSize: 20,
+                              minHeight: 50,
+                              minWidth: (double.infinity),
+                              cornerRadius: 30,
+                              inactiveBgColor: Colors.white,
+                              borderWidth: 1,
+                              borderColor: [Color(0xff707070)],
+                              labels: ['English', 'Sinhala'],
+                              onToggle: (index) {
+                                setState(() {
+                                  _toggleIndex = index!;
+                                });
+                              },
+                            ),
                           ),
                         ),
 
@@ -187,16 +123,51 @@ class _SearchScreenState extends State<SearchScreen> {
                               border: InputBorder.none,
                             ),
                             textInputAction: TextInputAction.search,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'Poppins'
-                            ),
+                            style: TextStyle(fontSize: 20),
                             textAlign: TextAlign.center,
-                          ),
+                            onChanged: (value) {
+                              setState(() {
+                                _filterMethod(value);
+                              });
+                            },
+                            onSubmitted: (value) {
+                              try {
+                                final result =
+                                    words.wordslist.firstWhere((element) {
+                                  if (_toggleIndex == 0) {
+                                    return element.engName == value;
+                                  }
+                                  return element.sinName == value;
+                                }
 
+                                        // element.engName == value
+                                        );
+                                setState(() {
+                                  if (_toggleIndex == 0) {
+                                    sinhalaWord = result.sinName;
+                                  } else {
+                                    sinhalaWord = result.engName;
+                                  }
+                                });
+                              } catch (e) {
+                                AlertDialog(
+                                  title: Text('No maching word'),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () {
+                                          // searchController.clear();
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('Ok'))
+                                  ],
+                                );
+                              }
+                            },
+                          ),
                         )
                         // Container(padding: EdgeInsets.all(20),child: const Text('Type text here', style: TextStyle(
                         //   fontSize: 20
+
                         // ),
                         // ))
                       ],
@@ -206,87 +177,78 @@ class _SearchScreenState extends State<SearchScreen> {
                     height: 50,
                     width: double.infinity,
                     margin:
-                    const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color(0xff707070),
+                        color: Color(0xff707070),
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Center(
-                        child: Text(
-                          sinhalaWord == null ? 'Result' : sinhalaWord!,
-                          style: const TextStyle(
+                        child: sinhalaWord == null
+                            ? const Text(
+                                'Result',
+                                style: TextStyle(
+                                    color: Color(0xff707070), fontSize: 20),
+                              )
+                            : Text(sinhalaWord!,
+                                style: const TextStyle(fontSize: 20))),
+                  ),
+                  _isLoading
+                      ? Container(
+                          child:
+                              Center(child: const CircularProgressIndicator()),
+                          height: 250,
+                          width: double.infinity,
+                        )
+                      : Container(
+                          height: 250,
+                          margin: const EdgeInsets.only(left: 15, right: 15),
+                          padding: const EdgeInsets.only(top: 0),
+                          decoration: BoxDecoration(
+                            border: Border.all(
                               color: Color(0xff707070),
-                              fontSize: 20,
-                          fontFamily: 'Poppins'),
-                        )),
-                  ),
-                  Container(
-                    height: 250,
-                    width: double.infinity,
-                    margin: const EdgeInsets.only(left: 15, right: 15),
-                    padding: const EdgeInsets.only(top: 0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xff707070),
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    ),
-                    child: _isLoading
-                        ? Transform.scale(
-                      scale: 0.2,
-                      child: const CircularProgressIndicator(
-                        strokeWidth: 20,
-                        color: Color(0xFF012766),
-                      ),
-
-                    )
-                        : ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: ListView.builder(
-                          itemCount: resultList.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              margin: const EdgeInsets.only(bottom: 1),
-                              child: ListTile(
-                                onTap: () {
-                                  setState(() {
-                                    sinhalaWord =
-                                    words.wordslist[index].sinName!;
-                                    print(sinhalaWord);
-                                  });
-                                },
-                                title:
-                                searchController.text == "" ?
-                                Text(
-                                    '${allResult[index].engName}',
-                                style: const TextStyle(
-                                  fontFamily: 'Poppins'
-                                ),):
-                                Text(
-                                  '${resultList[index]}',
-                                  style: const TextStyle(
-                                      fontFamily: 'Poppins'
-                                  ),)
-                              ),
-                            );
-                          }),
-                    ),
-                  ),
+                            ),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: ListView.builder(
+                                itemCount: _filterdWords.length,
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    margin: EdgeInsets.only(bottom: 1),
+                                    child: ListTile(
+                                      onTap: () {
+                                        setState(() {
+                                          if (_toggleIndex == 0) {
+                                            sinhalaWord =
+                                                _filterdWords[index].sinName!;
+                                          } else {
+                                            sinhalaWord =
+                                                _filterdWords[index].engName!;
+                                          }
+                                        });
+                                      },
+                                      title: _toggleIndex == 0
+                                          ? Text(
+                                              '${_filterdWords[index].engName}')
+                                          : Text(
+                                              '${_filterdWords[index].sinName}'),
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ),
                 ],
               ),
             ),
           ),
-        const Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: WaveWidget()),
+          const Align(
+              alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
         ],
       ),
     );
-
-
   }
-
-
 }
