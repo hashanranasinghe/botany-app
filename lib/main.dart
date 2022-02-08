@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(),
         routes: {
           SplashScreen.routName: (ctx) => const SplashScreen(),
-          SearchScreen.routeName: (ctx) => SearchScreen(),
+          SearchScreen.routeName: (ctx) => const SearchScreen(),
           SignUpScreen.routeName: (ctx) => const SignUpScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
           AddScreen.routeName: (ctx) => AddScreen(),
