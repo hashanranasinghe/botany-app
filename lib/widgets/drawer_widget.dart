@@ -54,7 +54,8 @@ class DrawerWidget extends StatelessWidget {
 
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushNamed(UpdateSearchScreen.routeName);
+                  Navigator.of(context)
+                      .pushReplacementNamed(UpdateSearchScreen.routeName);
                 },
                 leading: const Icon(Icons.update_outlined, color: Colors.black),
                 title: const Text(
@@ -72,7 +73,8 @@ class DrawerWidget extends StatelessWidget {
 
               ListTile(
                 onTap: () {
-                  Navigator.of(context).pushNamed(DeleteSearchScreen.routeName);
+                  Navigator.of(context)
+                      .pushReplacementNamed(DeleteSearchScreen.routeName);
                 },
                 leading: const Icon(Icons.delete_outline_outlined,
                     color: Colors.black),
