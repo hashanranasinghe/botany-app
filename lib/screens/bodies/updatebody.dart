@@ -1,6 +1,7 @@
 import 'package:botanyapp/models/word.dart';
 import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 
@@ -63,7 +64,7 @@ class _UpdateBodyState extends State<UpdateBody> {
     setState(() {
       _isLoading = false;
     });
-    Navigator.of(context).pop();
+    Navigator.of(context).pushReplacementNamed(UpdateSearchScreen.routeName);
   }
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -126,7 +127,7 @@ class _UpdateBodyState extends State<UpdateBody> {
         onSaved: (value) {
           _editedWord = Word(
             id: _editedWord.id,
-            engName: _editedWord.sinName,
+            engName: _editedWord.engName,
             sinName: value,
           );
         },
@@ -173,7 +174,10 @@ class _UpdateBodyState extends State<UpdateBody> {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .pushReplacementNamed(UpdateSearchScreen.routeName);
+        },
         child: const Text(
           'Cancel',
           style: TextStyle(
