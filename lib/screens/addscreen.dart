@@ -15,8 +15,10 @@ class AddScreen extends StatelessWidget {
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey,
       ),
-      body: AddBody(
-        scaffoldKey: _scaffoldKey,
+      body: SafeArea(
+        child: AddBody(
+          scaffoldKey: _scaffoldKey,
+        ),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class UpdateSearchBody extends StatefulWidget {
@@ -49,76 +50,81 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey,
       ),
-      body: Column(
-        children: [
-          TopScreenWidget(
-              scaffoldKey: _scaffoldKey,
-              topLeft: Padding(
-                padding: const EdgeInsets.only(top: 30, right: 10),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, SearchScreen.routeName);
-                    },
-                    icon: Icon(Icons.home)),
-              )),
-          Container(
-            padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildTopic(),
-                _buildSearchBar(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 70,
-          ),
-          Container(
-            height: 250,
-            margin: const EdgeInsets.only(left: 25, right: 25),
-            padding: const EdgeInsets.only(top: 0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color(0xff707070),
+      body: SafeArea(
+        child: Column(
+          children: [
+            TopScreenWidget(
+                scaffoldKey: _scaffoldKey,
+                topLeft: Padding(
+                  padding: EdgeInsets.only(top: 30.h, right: 10.w),
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, SearchScreen.routeName);
+                      },
+                      icon: Icon(Icons.home)),
+                )),
+            Container(
+              padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 20.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _buildTopic(),
+                  _buildSearchBar(),
+                ],
               ),
-              borderRadius: const BorderRadius.all(Radius.circular(30)),
             ),
-            child: _isLoading
-                ? Container(
-                    child: CircularProgressIndicator(),
-                    width: 50,
-                  )
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: ListView.builder(
-                        itemCount: _filterdWords.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            margin: EdgeInsets.only(bottom: 1),
-                            child: ListTile(
-                              trailing: IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pushNamed(
-                                        UpdateScreen.routeName,
-                                        arguments: words.wordslist[index].id);
-                                  },
-                                  icon: Icon(
-                                    Icons.edit,
-                                    color: Colors.black,
-                                  )),
-                              title: Text('${_filterdWords[index].engName}'),
-                            ),
-                          );
-                        }),
-                  ),
-          ),
-          const Expanded(
-            child: Align(
-                alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
-          ),
-        ],
+            SizedBox(
+              height: 70.h,
+            ),
+            Container(
+              height: 250.h,
+              margin: EdgeInsets.only(left: 25.w, right: 25.w),
+              padding: const EdgeInsets.only(top: 0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color(0xff707070),
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(30.r)),
+              ),
+              child: _isLoading
+                  ? Container(
+                      child: CircularProgressIndicator(),
+                      width: 50.w,
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(30.r),
+                      child: ListView.builder(
+                          itemCount: _filterdWords.length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              margin: EdgeInsets.only(bottom: 1.h),
+                              child: ListTile(
+                                trailing: IconButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pushReplacementNamed(
+                                              UpdateScreen.routeName,
+                                              arguments:
+                                                  words.wordslist[index].id);
+                                    },
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.black,
+                                    )),
+                                title: Text('${_filterdWords[index].engName}'),
+                              ),
+                            );
+                          }),
+                    ),
+            ),
+            const Expanded(
+              child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: WaveWidget()),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -126,9 +132,9 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
   // Widget _buildSearchfield(){
   Widget _buildTopic() {
     return Container(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.only(bottom: 10.h),
       child: Row(
-        children: const [
+        children: [
           Icon(
             Icons.update_outlined,
             color: Colors.black,
@@ -138,7 +144,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 20.sp,
             ),
           ),
         ],
@@ -148,19 +154,19 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
 
   Widget _buildSearchBar() {
     return CupertinoSearchTextField(
-      prefixInsets: const EdgeInsets.only(left: 20),
+      prefixInsets: EdgeInsets.only(left: 20.w),
       onChanged: (value) {
         setState(() {
           _filterMethod(value);
         });
       },
-      itemSize: 25,
+      itemSize: 25.sp,
       autofocus: true,
       style: const TextStyle(
         fontFamily: 'Poppins',
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(30.r),
         color: Colors.black12,
       ),
     );

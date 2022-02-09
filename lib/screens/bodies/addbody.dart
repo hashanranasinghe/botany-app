@@ -4,6 +4,7 @@ import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../searchscreen.dart';
@@ -18,7 +19,8 @@ class AddBody extends StatefulWidget {
 
 class _AddBodyState extends State<AddBody> {
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
-  //final TextEditingController _textController = TextEditingController();
+  final TextEditingController _botController = TextEditingController();
+  final TextEditingController _sinController = TextEditingController();
   final _engFocusNode = FocusNode();
   final _sinFocusNode = FocusNode();
 
@@ -69,11 +71,11 @@ class _AddBodyState extends State<AddBody> {
     Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
   }
 
-  Widget _buildBotNameField() {
+  Widget _buildBotNameField(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       child: TextFormField(
-        //controller: _textController,
+        controller: _botController,
         textAlign: TextAlign.center,
         onFieldSubmitted: (_) {
           FocusScope.of(context).requestFocus(_sinFocusNode);
@@ -90,24 +92,24 @@ class _AddBodyState extends State<AddBody> {
               engName: value, sinName: _editedWord.engName, id: _editedWord.id);
         },
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.w),
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "Botanical Name",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
   Widget _buildEnglishNameField() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       child: TextFormField(
-        //controller: _textController,
+        controller: _sinController,
         textAlign: TextAlign.center,
         validator: (value) {
           if (value!.isEmpty) {
@@ -124,33 +126,33 @@ class _AddBodyState extends State<AddBody> {
         },
         focusNode: _sinFocusNode,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          contentPadding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "sinhala name",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
         textInputAction: TextInputAction.done,
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
   Widget _buildSaveButton() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
       child: TextButton(
         onPressed: () {
           _saveForm();
         },
-        child: const Text(
+        child: Text(
           'Save',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -159,7 +161,8 @@ class _AddBodyState extends State<AddBody> {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.r))),
         ),
       ),
     );
@@ -167,17 +170,20 @@ class _AddBodyState extends State<AddBody> {
 
   Widget _buildCancelButton() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
       child: TextButton(
         onPressed: () {
-          // _textController.clear();
+          setState(() {
+            _botController.clear();
+            _sinController.clear();
+          });
         },
-        child: const Text(
-          'Cancel',
+        child: Text(
+          'Clear',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -187,20 +193,19 @@ class _AddBodyState extends State<AddBody> {
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)))),
+                    borderRadius: BorderRadius.circular(30.r)))),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         TopScreenWidget(
             scaffoldKey: widget.scaffoldKey,
             topLeft: Padding(
-              padding: const EdgeInsets.only(top: 30, right: 10),
+              padding: EdgeInsets.only(top: 30.h, right: 10.w),
               child: IconButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(
@@ -214,28 +219,27 @@ class _AddBodyState extends State<AddBody> {
                 key: _form,
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 150,
+                    SizedBox(
+                      height: 120.h,
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 15, right: 15),
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(30)),
+                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          const Text(
+                          Text(
                             'Add',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                              fontSize: 30.sp,
                             ),
                           ),
-                          _buildBotNameField(),
+                          _buildBotNameField(context),
                           _buildEnglishNameField(),
                           ListTile(
                             title: Row(

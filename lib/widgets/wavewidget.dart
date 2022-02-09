@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WaveWidget extends StatefulWidget {
   const WaveWidget({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _WaveWidgetState extends State<WaveWidget> {
               clipper: WaveClipper(),
               child: Container(
                 color: const Color(0Xff00bdff),
-                height: 170,
+                height: 168.h,
               ),
             ),
           ),
@@ -28,14 +29,14 @@ class _WaveWidgetState extends State<WaveWidget> {
             clipper: WaveClipper(),
             child: Container(
               color: const Color(0Xff2a74dd),
-              height: 140,
+              height: 138.h,
             ),
           ),
           ClipPath(
             clipper: WaveClipper(),
             child: Container(
               color: const Color(0Xff012766),
-              height: 110,
+              height: 108.h,
             ),
           ),
         ],
@@ -49,16 +50,16 @@ class WaveClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.lineTo(0.0, size.height - 50);
+    path.lineTo(0.0, size.height - 50.h);
     //first magnet
     var firstControlPoint = Offset(size.width / 4, size.height);
-    var firstEndPoint = Offset(size.width / 2, size.height - 50);
+    var firstEndPoint = Offset(size.width / 2, size.height - 50.h);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
     //Second magnet
-    var secondControlPoint = Offset(size.width * 0.75, size.height - 100);
-    var secondEndPoint = Offset(size.width, size.height - 50);
+    var secondControlPoint = Offset(size.width * 0.75.w, size.height - 100.h);
+    var secondEndPoint = Offset(size.width, size.height - 50.h);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
     path.lineTo(size.width, size.height);

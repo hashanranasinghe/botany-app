@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:botanyapp/screens/singpupage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,30 +19,27 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context);
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // logo here
-            Image.asset(
+      body: AnimatedSplashScreen(
+        splash: Center(
+          child: Container(
+            height: 300,
+            width: 200,
+            child: Image.asset(
               'assets/images/logo_1.png',
             ),
-            // const SizedBox(
-            // height: 20,
-            // ),
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-            )
-          ],
+          ),
         ),
+        nextScreen: SearchScreen(),
+        splashTransition: SplashTransition.fadeTransition,
       ),
     );
   }
