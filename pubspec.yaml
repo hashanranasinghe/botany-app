@@ -38,6 +38,14 @@ dependencies:
   simple_animations: ^4.0.1
   http: ^0.13.4
   toggle_switch: ^1.4.0
+  cloud_firestore: ^3.1.7
+  firebase_auth: ^3.3.6
+  firebase_core: ^1.12.0
+  fluttertoast: ^8.0.8
+  shared_preferences: ^2.0.13
+  google_sign_in: ^5.2.3
+  font_awesome_flutter: ^9.2.0
+  basic_utils: ^4.2.0
 
 dev_dependencies:
   flutter_test:

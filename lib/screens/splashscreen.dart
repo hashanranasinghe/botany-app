@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/screens/singpupage.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String? finalEmail;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
   static const routName = 'splash-screen';
+
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -17,8 +20,23 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+    getValidationData().whenComplete(() async{
+      Timer(const Duration(seconds: 3), () {
+        if(finalEmail == null){
+          Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+        }else{
+          Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+        }
+
+      });
+    });
+  }
+
+  Future getValidationData() async{
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var obtainEmail = sharedPreferences.getString('email');
+    setState(() {
+      finalEmail  =obtainEmail;
     });
   }
 

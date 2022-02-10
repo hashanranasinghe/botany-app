@@ -29,11 +29,10 @@ class LoginBackground extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 10 ,
+            bottom: 5 ,
             child: SizedBox(
                 height: 200, width: 200,child: Image.asset('assets/images/logo_1.png')),),
           child,
-
         ],
       ),
     );

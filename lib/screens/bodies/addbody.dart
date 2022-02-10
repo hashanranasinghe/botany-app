@@ -249,7 +249,8 @@ class _AddBodyState extends State<AddBody> {
                       ),
                     ),
                   ],
-                )),
+                ),
+            ),
           ),
         ),
         const Align(

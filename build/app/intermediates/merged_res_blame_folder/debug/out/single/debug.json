@@ -22,9 +22,5 @@
     {
         "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
-        "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     }
 ]

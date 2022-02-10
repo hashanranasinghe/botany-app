@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "124917017164",
+    "firebase_url": "https://dictionary-app-de127-default-rtdb.firebaseio.com",
+    "project_id": "dictionary-app-de127",
+    "storage_bucket": "dictionary-app-de127.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124917017164:android:083617e13a602211ec22e9",
+        "android_client_info": {
+          "package_name": "com.example.botanyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124917017164-v8ffue4oaaog55dcefh5hd510sqt7007.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.botanyapp",
+            "certificate_hash": "02fb83776cb5c8a4246ddfbdd15fe4d5e4f873cb"
+          }
+        },
+        {
+          "client_id": "124917017164-pip5h06g8undupc4231jkkk91lorcocc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmAfJU9gESRKgDjfLmBHMDYSpR6xg9QnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124917017164-pip5h06g8undupc4231jkkk91lorcocc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

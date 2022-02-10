@@ -1,5 +1,10 @@
+import 'package:botanyapp/screens/resetscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../singpupage.dart';
 import 'loginbackground.dart';
 
 class LoginBody extends StatefulWidget {
@@ -11,14 +16,20 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   String? _userName;
   String? _password;
   bool _passwordVisible = false;
+  final _auth = FirebaseAuth.instance;
 
   Widget _buildUsernameField() {
     return Container(
       child: TextFormField(
         maxLength: 50,
+        controller: emailController,
+        keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.next,
         validator: (text) {
           return Validator.NameValidate(text!);
         },
@@ -45,6 +56,8 @@ class _LoginBodyState extends State<LoginBody> {
       child: TextFormField(
         maxLength: 8,
         maxLines: 1,
+        controller: passwordController,
+        textInputAction: TextInputAction.done,
         validator: (text) {
           return Validator.PasswordValidate(text!);
         },
@@ -82,12 +95,11 @@ class _LoginBodyState extends State<LoginBody> {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextButton(
-        onPressed: () {
-          if (formKey.currentState!.validate()) {
-            formKey.currentState!.save();
-            print(_userName);
-            Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
-          }
+        onPressed: () async {
+
+          signIn(emailController.text, passwordController.text);
+          final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          sharedPreferences.setString('email', emailController.text);
         },
         child: Text(
           "Login".toUpperCase(),
@@ -119,7 +131,7 @@ class _LoginBodyState extends State<LoginBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const SizedBox(
-                height: 100,
+                height: 120,
               ),
               const Text(
                 'Login',
@@ -132,38 +144,64 @@ class _LoginBodyState extends State<LoginBody> {
               _buildUsernameField(),
               _buildPasswordField(),
               _buildLoginButton(),
-              _buildForgetPassword(),
-              _buildCreateAccount(),
+              _buildForgetPassword(context),
+              _buildCreateAccount(context),
             ],
           ),
         ),
       ),
     );
   }
+
+  Future<void> signIn(String email,String password) async {
+    if(formKey.currentState!.validate()){
+      await _auth.signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+            Fluttertoast.showToast(msg: "Login Successful"),
+        Navigator.of(context).pushReplacementNamed(SearchScreen.routeName),
+      }).catchError((e)
+          {
+        Fluttertoast.showToast(msg: e.toString());
+          }
+      );
+    }
+    }
+
+
+
 }
 
-Widget _buildForgetPassword() {
+Widget _buildForgetPassword(BuildContext context) {
   return Container(
     alignment: Alignment.bottomRight,
     padding: const EdgeInsets.only(right: 40),
-    child: const Text(
-      'Forget your Password?',
+    child: TextButton(
+      child: const Text('Forget your Password?',
       style: TextStyle(
         fontFamily: 'Poppins',
-        fontSize: 10,
+        fontSize: 15,
       ),
     ),
+  onPressed: (){
+        Navigator.of(context).pushReplacementNamed(ResetScreen.routeName);
+  },
+  ),
   );
 }
 
-Widget _buildCreateAccount() {
+Widget _buildCreateAccount(BuildContext context) {
   return Container(
     height: 40,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
-        Text("Don't have an account? "),
-        Text("Create"),
+      children: <Widget>[
+        const Text("Don't have an account? "),
+        TextButton(
+          child: const Text('Create'),
+          onPressed: (){
+            Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
+          },
+        ),
       ],
     ),
   );
@@ -186,7 +224,10 @@ class Validator {
       return "Password Cannot be Empty";
     } else if (!passwordValue.contains(RegExp(r'[a-zA-Z0-9]'))) {
       return "Invalid Password";
+    }else if(passwordValue.length < 6){
+      return "Enter valid Password.(Min. 6 characters)";
     }
     return null;
   }
 }
+

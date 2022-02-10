@@ -30,7 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
         _isLoading = true;
       });
 
-      var wordlist = Provider.of<Words>(context).fetchAndSetProduct().then((_) {
+    Provider.of<Words>(context).fetchAndSetProduct().then((_) {
         setState(() {
           _isLoading = false;
           _words = _filterdWords =
@@ -47,8 +47,8 @@ class _SearchScreenState extends State<SearchScreen> {
     setState(() {
       _filterdWords = _words
           .where((word) => _toggleIndex == 0
-              ? word.engName!.toLowerCase().contains(value.toLowerCase())
-              : word.sinName!.toLowerCase().contains(value.toLowerCase()))
+          ? word.engName!.toLowerCase().contains(value.toLowerCase())
+          : word.sinName!.toLowerCase().contains(value.toLowerCase()))
           .toList();
     });
   }
@@ -84,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     margin: const EdgeInsets.only(
                         left: 15, right: 15, top: 15, bottom: 15),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff707070)),
+                      border: Border.all(color: const Color(0xff707070)),
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Column(
@@ -95,14 +95,14 @@ class _SearchScreenState extends State<SearchScreen> {
                             child: ToggleSwitch(
                               initialLabelIndex: _toggleIndex,
                               totalSwitches: 2,
-                              activeBgColor: [Color(0xFF012766)],
+                              activeBgColor: [const Color(0xFF012766)],
                               fontSize: 20,
                               minHeight: 50,
                               minWidth: (double.infinity),
                               cornerRadius: 30,
                               inactiveBgColor: Colors.white,
                               borderWidth: 1,
-                              borderColor: [Color(0xff707070)],
+                              borderColor: [const Color(0xff707070)],
                               labels: ['English', 'Sinhala'],
                               onToggle: (index) {
                                 setState(() {
@@ -123,7 +123,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               border: InputBorder.none,
                             ),
                             textInputAction: TextInputAction.search,
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                             textAlign: TextAlign.center,
                             onChanged: (value) {
                               setState(() {
@@ -133,15 +133,15 @@ class _SearchScreenState extends State<SearchScreen> {
                             onSubmitted: (value) {
                               try {
                                 final result =
-                                    words.wordslist.firstWhere((element) {
+                                words.wordslist.firstWhere((element) {
                                   if (_toggleIndex == 0) {
                                     return element.engName == value;
                                   }
                                   return element.sinName == value;
                                 }
 
-                                        // element.engName == value
-                                        );
+                                  // element.engName == value
+                                );
                                 setState(() {
                                   if (_toggleIndex == 0) {
                                     sinhalaWord = result.sinName;
@@ -151,14 +151,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                 });
                               } catch (e) {
                                 AlertDialog(
-                                  title: Text('No maching word'),
+                                  title: const Text('No maching word'),
                                   actions: [
                                     TextButton(
                                         onPressed: () {
                                           // searchController.clear();
                                           Navigator.pop(context);
                                         },
-                                        child: Text('Ok'))
+                                        child: const Text('Ok'))
                                   ],
                                 );
                               }
@@ -177,70 +177,68 @@ class _SearchScreenState extends State<SearchScreen> {
                     height: 50,
                     width: double.infinity,
                     margin:
-                        const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                    const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xff707070),
+                        color: const Color(0xff707070),
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                     ),
                     child: Center(
                         child: sinhalaWord == null
                             ? const Text(
-                                'Result',
-                                style: TextStyle(
-                                    color: Color(0xff707070), fontSize: 20),
-                              )
-                            : Text(sinhalaWord!,
-                                style: const TextStyle(fontSize: 20))),
-                  ),
-                  _isLoading
-                      ? Container(
-                          child:
-                              Center(child: const CircularProgressIndicator()),
-                          height: 250,
-                          width: double.infinity,
+                          'Result',
+                          style: TextStyle(
+                              color: Color(0xff707070), fontSize: 20),
                         )
-                      : Container(
-                          height: 250,
-                          margin: const EdgeInsets.only(left: 15, right: 15),
-                          padding: const EdgeInsets.only(top: 0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xff707070),
-                            ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: ListView.builder(
-                                itemCount: _filterdWords.length,
-                                itemBuilder: (context, index) {
-                                  return Card(
-                                    margin: EdgeInsets.only(bottom: 1),
-                                    child: ListTile(
-                                      onTap: () {
-                                        setState(() {
-                                          if (_toggleIndex == 0) {
-                                            sinhalaWord =
-                                                _filterdWords[index].sinName!;
-                                          } else {
-                                            sinhalaWord =
-                                                _filterdWords[index].engName!;
-                                          }
-                                        });
-                                      },
-                                      title: _toggleIndex == 0
-                                          ? Text(
-                                              '${_filterdWords[index].engName}')
-                                          : Text(
-                                              '${_filterdWords[index].sinName}'),
-                                    ),
-                                  );
-                                }),
-                          ),
-                        ),
+                            : Text(sinhalaWord!,
+                            style: const TextStyle(fontSize: 20))),
+                  ),
+                  if (_isLoading) Container(
+                    child:
+                    const Center(child: CircularProgressIndicator()),
+                    height: 250,
+                    width: double.infinity,
+                  ) else Container(
+                    height: 250,
+                    margin: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: const Color(0xff707070),
+                      ),
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(30)),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: ListView.builder(
+                          itemCount: _filterdWords.length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              margin: const EdgeInsets.only(bottom: 1),
+                              child: ListTile(
+                                onTap: () {
+                                  setState(() {
+                                    if (_toggleIndex == 0) {
+                                      sinhalaWord =
+                                      _filterdWords[index].sinName!;
+                                    } else {
+                                      sinhalaWord =
+                                      _filterdWords[index].engName!;
+                                    }
+                                  });
+                                },
+                                title: _toggleIndex == 0
+                                    ? Text(
+                                    '${_filterdWords[index].engName}')
+                                    : Text(
+                                    '${_filterdWords[index].sinName}'),
+                              ),
+                            );
+                          }),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -93,7 +93,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 70,
           ),
           Container(
@@ -102,7 +102,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
             padding: const EdgeInsets.only(top: 0),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Color(0xff707070),
+                color: const Color(0xff707070),
               ),
               borderRadius: const BorderRadius.all(Radius.circular(30)),
             ),
@@ -112,7 +112,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                   itemCount: _filterdWords.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      margin: EdgeInsets.only(bottom: 1),
+                      margin: const EdgeInsets.only(bottom: 1),
                       child: ListTile(
                         trailing: IconButton(
                             onPressed: () {
@@ -120,14 +120,14 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: Text(
-                                        'Dou you really wan\'t to delete? '),
+                                    title: const Text(
+                                        "Do you really want to delete?"),
                                     actions: [
                                       FlatButton(
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
-                                        child: Text('No'),
+                                        child: const Text('No'),
                                       ),
                                       FlatButton(
                                           onPressed: () {
@@ -140,7 +140,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                                                     DeleteSearchScreen
                                                         .routeName);
                                           },
-                                          child: Text('Yes'))
+                                          child: const Text('Yes'))
                                     ],
                                   );
                                 },

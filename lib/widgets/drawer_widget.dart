@@ -1,9 +1,10 @@
 import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/screens/deletesearchscreen.dart';
-import 'package:botanyapp/screens/updatescreen.dart';
+import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerWidget extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -90,7 +91,25 @@ class DrawerWidget extends StatelessWidget {
               const Divider(
                 thickness: 2,
               ),
-              Padding(padding: EdgeInsets.only(top: height * 0.3)),
+              ListTile(
+                onTap: () async {
+                  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                  sharedPreferences.remove('email');
+                  Navigator.of(context)
+                      .pushReplacementNamed(LoginScreen.routeName);
+                },
+                leading: const Icon(Icons.logout_outlined,
+                    color: Colors.black),
+                title: const Text(
+                  'Log Out',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: height * 0.2)),
               Stack(
                 children: [
                   Positioned(

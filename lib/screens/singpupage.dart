@@ -1,7 +1,17 @@
 
+import 'package:botanyapp/models/createAccount.dart';
+import 'package:botanyapp/models/googlesignin.dart';
+import 'package:botanyapp/screens/loginscreen.dart';
+import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:botanyapp/screens/verificationemailscreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
-class SignUpScreen extends StatefulWidget {
+
+class SignUpScreen extends StatefulWidget{
   const SignUpScreen({Key? key}) : super(key: key);
   static const routeName = 'Signup screen';
 
@@ -9,17 +19,27 @@ class SignUpScreen extends StatefulWidget {
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen>  {
   String? _userName;
   String? _email;
   String? _password;
-  String? _confirmEmail;
+  String? _confirmPassword;
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
   final _form = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body: Column(
       children: [
@@ -41,7 +61,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           "Sign-Up",
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins'
                           ),
                         ),
                       ),
@@ -53,7 +75,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         margin: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 40),
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                         signUp(emailController.text.trim(), passwordController.text.trim());
+                         },
                             child: Container(
                               padding: const EdgeInsets.all(6),
                               width: double.infinity,
@@ -105,22 +129,57 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 35,
                         child: GestureDetector(
+                          onTap: (){
+                            final googleProvider = Provider.of<GoogleSignInProvider>(context,listen: false);
+                            googleProvider.googleLogin().whenComplete(() =>
+                                Navigator.of(context).pushReplacementNamed(SearchScreen.routeName)
+
+                            );
+                          },
                           child: const Image(
                             image: AssetImage('assets/images/google-logo.png'),
                           ),
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Already have an account ?",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+
+                          ),),
+                          TextButton(child: const Text(
+                            'Log in',
+                            // style: TextStyle(color: Color(0xff707070)),
+                          ),
+                            onPressed: (){
+                              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+                            },)
+                        ],
+                      ),
+
+
                     ])),
           ),
         ),
       ],
-    ));
+    ),
+    );
+
+
   }
 
   Widget _buildUsername() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        controller: usernameController,
         autofocus: true,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
@@ -128,10 +187,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             hintText: "Username",
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
-        validator: (String? value) {
-          if (value!.isEmpty) {
-            return 'Username can\'t be null';
-          }
+        validator: (value) {
+          return Validator.NameValidate(value!);
         },
         onSaved: (String? value) {
           _userName = value;
@@ -144,6 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        controller: emailController,
         keyboardType: TextInputType.emailAddress,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
@@ -151,17 +209,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             hintText: "Email",
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
-        validator: (String? value) {
-          const Pattern =
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-          final regExp = RegExp(Pattern);
-          if (value!.isEmpty) {
-            return 'Email can\'t be empty';
-          } else if (!regExp.hasMatch(value)) {
-            return 'Enter a valid email';
-          } else {
-            return null;
-          }
+        validator: (value) {
+          return Validator.emailValidate(value!);
         },
         onSaved: (String? value) {
           _email = value;
@@ -171,10 +220,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPassword() {
-
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        controller: passwordController,
         obscureText: !_passwordVisible,
         keyboardType: TextInputType.visiblePassword,
         textAlign: TextAlign.center,
@@ -196,10 +245,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
           ),
         ),
-        validator: (String? value) {
-          if (value!.isEmpty) {
-            return 'Password can\'t be empty';
-          }
+        validator: (value) {
+          return Validator.PasswordValidate(value!);
         },
         onSaved: (String? value) {
           _password = value;
@@ -209,10 +256,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildConfirmPassword() {
-
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
       child: TextFormField(
+        controller: confirmPasswordController,
         obscureText: !_confirmPasswordVisible,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
@@ -220,7 +267,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             hintText: "Confirm Password",
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-
           suffixIcon: IconButton(
             icon: Icon(
                 _confirmPasswordVisible
@@ -234,18 +280,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
               });
             },
           ),
-
-
         ),
-        validator: (String? value) {
-          if (value!.isEmpty) {
-            return 'Pleace confirm password';
+        validator: (value) {
+          if(confirmPasswordController.text !=passwordController.text){
+            return "Password do not match.";
           }
+          return null;
         },
         onSaved: (String? value) {
-          _confirmEmail = value;
+          _confirmPassword = value;
         },
       ),
     );
+  }
+
+  void signUp(String email, String password) async{
+    if(_form.currentState!.validate()){
+
+        await _auth.createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) =>{
+          postDetailsToFileStore()
+
+        }).catchError((e)
+        {
+          Fluttertoast.showToast(msg: e!.message);
+        });
+      }
+
+  }
+
+  postDetailsToFileStore() async{
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+    CreateAccDetails createAccDetails = CreateAccDetails();
+    createAccDetails.userName = usernameController.text;
+    createAccDetails.email = user!.email;
+    createAccDetails.uid = user.uid;
+
+   firebaseFirestore
+    .collection("users")
+    .doc(user.uid)
+    .set(createAccDetails.toMap());
+
+
+      Fluttertoast.showToast(msg: "Account Created Successfully.");
+
+      Navigator.of(context).pushReplacementNamed(VerificationEmailScreen.routeName);
+  }
+
+
+}
+class Validator {
+  static String? NameValidate(String value) {
+    if (value.isEmpty) {
+      return "Name cannot be Empty";
+    } else if (!value.contains(RegExp(r'[A-z]'))) {
+      return "Invalid Name.";
+    } else if (value.length < 3) {
+      return "Invalid Name.";
+    }
+    return null;
+  }
+
+  static String? PasswordValidate(String passwordValue) {
+    if (passwordValue.isEmpty) {
+      return "Password Cannot be Empty";
+    } else if (!passwordValue.contains(RegExp(r'[a-zA-Z0-9]'))) {
+      return "Invalid Password";
+    }else if(passwordValue.length < 6){
+      return "Enter valid Password.(Min. 6 characters)";
+    }
+    return null;
+  }
+
+  static String? emailValidate(String emailValue){
+    const pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    final regExp = RegExp(pattern);
+    if (emailValue.isEmpty) {
+      return 'Email can\'t be empty';
+    } else if (!regExp.hasMatch(emailValue)) {
+      return 'Enter a valid email';
+    } else {
+      return null;
+    }
   }
 }
