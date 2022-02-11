@@ -12,16 +12,16 @@
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     },
     {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_notification_template_part_chronometer.xml.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -40,6 +40,14 @@
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable_notification_bg_low.xml.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable\\notification_bg_low.xml"
     },
@@ -52,12 +60,12 @@
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_custom_dialog.xml.flat",
-        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\notification_action.xml"
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_custom_dialog.xml.flat",
+        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\custom_dialog.xml"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\mipmap-mdpi_ic_launcher.png.flat",
@@ -70,6 +78,10 @@
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
@@ -88,10 +100,6 @@
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-v21_launch_background.xml.flat",
         "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
     },
@@ -108,6 +116,10 @@
         "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-v21_notification_action_background.xml.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-v21\\notification_action_background.xml"
     },
@@ -118,10 +130,6 @@
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout-v21_notification_action.xml.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout-v21\\notification_action.xml"
-    },
-    {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout-v16_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\layout-v21_notification_template_icon_group.xml.flat",
@@ -142,10 +150,6 @@
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\5f663b08eec19eef9a9d1af662d9025e\\core-1.6.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable_launch_background.xml.flat",
-        "source": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     },
     {
         "merged": "C:\\Users\\Maduka\\AndroidStudioProjects\\botany-app\\build\\app\\intermediates\\res\\merged\\release\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",

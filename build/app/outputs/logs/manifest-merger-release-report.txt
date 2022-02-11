@@ -8,7 +8,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ma
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] C:\Users\Maduka\.gradle\caches\transforms-2\files-2.1\5f663b08eec19eef9a9d1af662d9025e\core-1.6.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:5:9-34
+		ADDED from C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:5:9-31
 	android:icon
 		ADDED from C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:7:9-43
 	android:name

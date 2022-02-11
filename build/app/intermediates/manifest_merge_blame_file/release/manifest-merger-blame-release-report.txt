@@ -1,13 +1,13 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.example.botanyapp"
-4    android:versionCode="1"
+4    android:versionCode="2"
 5    android:versionName="1.0.1" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="21"
 8-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="31" />
+9        android:targetSdkVersion="29" />
 9-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
@@ -21,8 +21,8 @@
 15-->[androidx.core:core:1.6.0] C:\Users\Maduka\.gradle\caches\transforms-2\files-2.1\5f663b08eec19eef9a9d1af662d9025e\core-1.6.0\AndroidManifest.xml:24:18-86
 16        android:icon="@mipmap/ic_launcher"
 16-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:7:9-43
-17        android:label="botanyapp" >
-17-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:5:9-34
+17        android:label="Botany" >
+17-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:5:9-31
 18        <activity
 18-->C:\Users\Maduka\AndroidStudioProjects\botany-app\android\app\src\main\AndroidManifest.xml:8:9-28:20
 19            android:name="com.example.botanyapp.MainActivity"

@@ -2508,8 +2508,8 @@ io.flutter.plugins.sharedpreferences.R$dimen
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$1
 kotlin.time.DurationUnitKt$WhenMappings
 androidx.core.R$drawable
-androidx.core.text.BidiFormatter
 androidx.core.view.inputmethod.InputConnectionCompat$1
+androidx.core.text.BidiFormatter
 androidx.loader.content.AsyncTaskLoader
 io.flutter.view.FlutterView$SurfaceTextureRegistryEntry$1
 kotlin.SuspendKt
@@ -2712,8 +2712,8 @@ kotlin.text.StringsKt__StringsKt$rangesDelimitedBy$4
 kotlin.text.ScreenFloatValueRegEx
 androidx.customview.R$layout
 kotlin.jvm.internal.Ref$ByteRef
-android.support.v4.app.INotificationSideChannel$Stub
 androidx.core.app.JobIntentService$JobServiceEngineImpl
+android.support.v4.app.INotificationSideChannel$Stub
 kotlin.coroutines.CombinedContext$Serialized$Companion
 androidx.core.view.ContentInfoCompat$Builder
 androidx.core.app.BundleCompat
@@ -2892,8 +2892,8 @@ androidx.customview.widget.ExploreByTouchHelper$1
 androidx.core.graphics.PathSegment
 androidx.core.app.SharedElementCallback
 androidx.core.graphics.drawable.IconCompat$IconType
-kotlin.io.AccessDeniedException
 kotlin.UnsignedKt
+kotlin.io.AccessDeniedException
 android.support.v4.os.IResultReceiver
 androidx.core.graphics.drawable.RoundedBitmapDrawable
 kotlin.SafePublicationLazyImpl
@@ -3078,5 +3078,5 @@ io.flutter.Log:
     public static int INFO
     public static int VERBOSE
     public static int WARN
-io.flutter.plugin.platform.PlatformView$-CC
 io.flutter.plugin.common.BinaryMessenger$-CC
+io.flutter.plugin.platform.PlatformView$-CC
