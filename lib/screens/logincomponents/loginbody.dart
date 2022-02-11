@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../singpupage.dart';
 import 'loginbackground.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({Key? key}) : super(key: key);
@@ -39,15 +40,15 @@ class _LoginBodyState extends State<LoginBody> {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "UserName",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
@@ -68,12 +69,12 @@ class _LoginBodyState extends State<LoginBody> {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "Password",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
           suffixIcon: IconButton(
             icon: Icon(
                 _passwordVisible ? Icons.visibility : Icons.visibility_off),
@@ -86,14 +87,14 @@ class _LoginBodyState extends State<LoginBody> {
           ),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
   Widget _buildLoginButton() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextButton(
         onPressed: () async {
 
@@ -103,8 +104,8 @@ class _LoginBodyState extends State<LoginBody> {
         },
         child: Text(
           "Login".toUpperCase(),
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: 20.sp,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -114,7 +115,7 @@ class _LoginBodyState extends State<LoginBody> {
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)))),
+                    borderRadius: BorderRadius.circular(30.r)))),
       ),
     );
   }
@@ -130,15 +131,15 @@ class _LoginBodyState extends State<LoginBody> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(
-                height: 120,
+              SizedBox(
+                height: 350.h,
               ),
-              const Text(
+              Text(
                 'Login',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
+                  fontSize: 30.sp,
                 ),
               ),
               _buildUsernameField(),
@@ -157,15 +158,15 @@ class _LoginBodyState extends State<LoginBody> {
     if(formKey.currentState!.validate()){
       await _auth.signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
-            Fluttertoast.showToast(msg: "Login Successful"),
+        Fluttertoast.showToast(msg: "Login Successful"),
         Navigator.of(context).pushReplacementNamed(SearchScreen.routeName),
       }).catchError((e)
-          {
+      {
         Fluttertoast.showToast(msg: e.toString());
-          }
+      }
       );
     }
-    }
+  }
 
 
 
@@ -174,24 +175,24 @@ class _LoginBodyState extends State<LoginBody> {
 Widget _buildForgetPassword(BuildContext context) {
   return Container(
     alignment: Alignment.bottomRight,
-    padding: const EdgeInsets.only(right: 40),
+    padding: EdgeInsets.only(right: 40.w),
     child: TextButton(
-      child: const Text('Forget your Password?',
-      style: TextStyle(
-        fontFamily: 'Poppins',
-        fontSize: 15,
+      child: Text('Forget your Password?',
+        style: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 15.sp,
+        ),
       ),
-    ),
-  onPressed: (){
+      onPressed: (){
         Navigator.of(context).pushReplacementNamed(ResetScreen.routeName);
-  },
-  ),
+      },
+    ),
   );
 }
 
 Widget _buildCreateAccount(BuildContext context) {
-  return Container(
-    height: 40,
+  return SizedBox(
+    height: 40.h,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[

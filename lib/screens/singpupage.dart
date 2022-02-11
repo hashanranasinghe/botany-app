@@ -9,9 +9,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-class SignUpScreen extends StatefulWidget{
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
   static const routeName = 'Signup screen';
 
@@ -19,7 +20,7 @@ class SignUpScreen extends StatefulWidget{
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen>  {
+class _SignUpScreenState extends State<SignUpScreen> {
   String? _userName;
   String? _email;
   String? _password;
@@ -29,17 +30,13 @@ class _SignUpScreenState extends State<SignUpScreen>  {
   final _form = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
 
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: Column(
       children: [
@@ -55,15 +52,13 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
-                        margin: const EdgeInsets.only(
-                            left: 40, top: 10, bottom: 10),
-                        child: const Text(
+                        margin: EdgeInsets.only(
+                            left: 40.w, top: 10.h, bottom: 10.h),
+                        child: Text(
                           "Sign-Up",
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'
+                            fontSize: 40.sp,
                           ),
                         ),
                       ),
@@ -72,14 +67,15 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                       _buildPassword(),
                       _buildConfirmPassword(),
                       Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 40),
+                        margin: EdgeInsets.symmetric(
+                            vertical: 5.h, horizontal: 40.w),
                         child: TextButton(
                             onPressed: () {
-                         signUp(emailController.text.trim(), passwordController.text.trim());
-                         },
+                              signUp(emailController.text.trim(), passwordController.text.trim());
+                            },
                             child: Container(
-                              padding: const EdgeInsets.all(6),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 6.h, horizontal: 6.w),
                               width: double.infinity,
                               child: const Center(
                                 child: Text(
@@ -93,16 +89,17 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                                 shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(27),
+                                  borderRadius: BorderRadius.circular(27.r),
                                 )),
                                 backgroundColor: MaterialStateProperty.all(
                                     const Color(0xff102248)))),
                       ),
-                      const SizedBox(
-                        height: 15,
+                      SizedBox(
+                        height: 15.h,
                       ),
                       Container(
-                        margin: const EdgeInsets.all(10),
+                        margin: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
                         child: Row(
                           children: const [
                             Expanded(
@@ -123,11 +120,11 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       SizedBox(
-                        height: 35,
+                        height: 35.h,
                         child: GestureDetector(
                           onTap: (){
                             final googleProvider = Provider.of<GoogleSignInProvider>(context,listen: false);
@@ -141,19 +138,19 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: 10.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text("Already have an account ?",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
 
-                          ),),
+                            ),),
                           TextButton(child: const Text(
                             'Log in',
                             // style: TextStyle(color: Color(0xff707070)),
@@ -163,32 +160,30 @@ class _SignUpScreenState extends State<SignUpScreen>  {
                             },)
                         ],
                       ),
-
-
                     ])),
           ),
         ),
       ],
-    ),
-    );
-
-
+    ));
   }
 
   Widget _buildUsername() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextFormField(
         controller: usernameController,
         autofocus: true,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(5),
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
             hintText: "Username",
             border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
-        validator: (value) {
-          return Validator.NameValidate(value!);
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30.r))),
+        validator: (String? value) {
+          if (value!.isEmpty) {
+            return 'Username can\'t be null';
+          }
         },
         onSaved: (String? value) {
           _userName = value;
@@ -199,16 +194,17 @@ class _SignUpScreenState extends State<SignUpScreen>  {
 
   Widget _buildEmail() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextFormField(
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(5),
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.h),
             hintText: "Email",
             border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30.r))),
         validator: (value) {
           return Validator.emailValidate(value!);
         },
@@ -221,24 +217,21 @@ class _SignUpScreenState extends State<SignUpScreen>  {
 
   Widget _buildPassword() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextFormField(
         controller: passwordController,
         obscureText: !_passwordVisible,
         keyboardType: TextInputType.visiblePassword,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(5),
-            hintText: "Password",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          contentPadding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+          hintText: "Password",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
           suffixIcon: IconButton(
             icon: Icon(
-                _passwordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off
-            ),
+                _passwordVisible ? Icons.visibility : Icons.visibility_off),
             color: Colors.black,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 _passwordVisible = !_passwordVisible;
               });
@@ -257,24 +250,21 @@ class _SignUpScreenState extends State<SignUpScreen>  {
 
   Widget _buildConfirmPassword() {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextFormField(
         controller: confirmPasswordController,
         obscureText: !_confirmPasswordVisible,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(5),
-            hintText: "Confirm Password",
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+          hintText: "Confirm Password",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
           suffixIcon: IconButton(
-            icon: Icon(
-                _confirmPasswordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off
-            ),
+            icon: Icon(_confirmPasswordVisible
+                ? Icons.visibility
+                : Icons.visibility_off),
             color: Colors.black,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 _confirmPasswordVisible = !_confirmPasswordVisible;
               });
@@ -293,19 +283,18 @@ class _SignUpScreenState extends State<SignUpScreen>  {
       ),
     );
   }
-
   void signUp(String email, String password) async{
     if(_form.currentState!.validate()){
 
-        await _auth.createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) =>{
-          postDetailsToFileStore()
+      await _auth.createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) =>{
+        postDetailsToFileStore()
 
-        }).catchError((e)
-        {
-          Fluttertoast.showToast(msg: e!.message);
-        });
-      }
+      }).catchError((e)
+      {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
 
   }
 
@@ -317,19 +306,15 @@ class _SignUpScreenState extends State<SignUpScreen>  {
     createAccDetails.email = user!.email;
     createAccDetails.uid = user.uid;
 
-   firebaseFirestore
-    .collection("users")
-    .doc(user.uid)
-    .set(createAccDetails.toMap());
-
-
-      Fluttertoast.showToast(msg: "Account Created Successfully.");
-
-      Navigator.of(context).pushReplacementNamed(VerificationEmailScreen.routeName);
+    firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(createAccDetails.toMap());
+    Navigator.of(context).pushReplacementNamed(VerificationEmailScreen.routeName);
   }
 
-
 }
+
 class Validator {
   static String? NameValidate(String value) {
     if (value.isEmpty) {
@@ -366,3 +351,4 @@ class Validator {
     }
   }
 }
+

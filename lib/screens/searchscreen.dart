@@ -5,8 +5,12 @@ import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+
+
 
 class SearchScreen extends StatefulWidget {
   static const routeName = 'search_screen';
@@ -22,7 +26,21 @@ class _SearchScreenState extends State<SearchScreen> {
   List<Word> _words = [];
   List<Word> _filterdWords = [];
   String? sinhalaWord;
+  String? typedText;
   var _toggleIndex = 0;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  var searchController = TextEditingController();
+  List<bool> isSelected = [true, false];
+  FocusNode focusNodeButton1 = FocusNode();
+  FocusNode focusNodeButton2 = FocusNode();
+  List<FocusNode>? focusToggle;
+
+
+
+
+
   @override
   void didChangeDependencies() {
     if (_isInit) {
@@ -30,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
         _isLoading = true;
       });
 
-    Provider.of<Words>(context).fetchAndSetProduct().then((_) {
+      var wordlist = Provider.of<Words>(context).fetchAndSetProduct().then((_) {
         setState(() {
           _isLoading = false;
           _words = _filterdWords =
@@ -38,6 +56,10 @@ class _SearchScreenState extends State<SearchScreen> {
         });
       });
     }
+
+    searchController.addListener(() {
+      setState(() {});
+    });
 
     _isInit = false;
     super.didChangeDependencies();
@@ -47,15 +69,27 @@ class _SearchScreenState extends State<SearchScreen> {
     setState(() {
       _filterdWords = _words
           .where((word) => _toggleIndex == 0
-          ? word.engName!.toLowerCase().contains(value.toLowerCase())
-          : word.sinName!.toLowerCase().contains(value.toLowerCase()))
+              ? word.engName!.toLowerCase().contains(value.toLowerCase())
+              : word.sinName!.toLowerCase().contains(value.toLowerCase()))
           .toList();
     });
   }
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final searchController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    focusToggle = [focusNodeButton1, focusNodeButton2];
+  }
+
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    focusNodeButton1.dispose();
+    focusNodeButton2.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,185 +101,322 @@ class _SearchScreenState extends State<SearchScreen> {
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey,
       ),
-      body: Column(
-        children: [
-          TopScreenWidget(
-              scaffoldKey: _scaffoldKey,
-              topLeft: const SizedBox(
-                height: 50,
-                width: 50,
-              )),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    height: 120,
-                    margin: const EdgeInsets.only(
-                        left: 15, right: 15, top: 15, bottom: 15),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xff707070)),
-                      borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                TopScreenWidget(
+                    scaffoldKey: _scaffoldKey,
+                    topLeft: SizedBox(
+                      height: 50.h,
+                      width: 50.w,
+                    )),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Expanded(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: ToggleSwitch(
-                              initialLabelIndex: _toggleIndex,
-                              totalSwitches: 2,
-                              activeBgColor: [const Color(0xFF012766)],
-                              fontSize: 20,
-                              minHeight: 50,
-                              minWidth: (double.infinity),
-                              cornerRadius: 30,
-                              inactiveBgColor: Colors.white,
-                              borderWidth: 1,
-                              borderColor: [const Color(0xff707070)],
-                              labels: ['English', 'Sinhala'],
-                              onToggle: (index) {
-                                setState(() {
-                                  _toggleIndex = index!;
-                                });
-                              },
-                            ),
+                        Container(
+                          height: 120.h,
+                          margin: EdgeInsets.only(
+                              left: 15.w, right: 15.w, top: 15.h, bottom: 15.h),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xff707070)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.r)),
+                          ),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: LayoutBuilder(
+                                      builder: (context, con) => ToggleButtons(
+                                        constraints: BoxConstraints.expand(
+                                            width: con.maxWidth / 2 - 1.7.w),
+                                        children: [
+                                          Text(
+                                            'Botanical',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 18.sp,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Sinhala',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 18.sp,
+                                            ),
+                                          )
+                                        ],
+                                        borderWidth: 1,
+                                        borderColor: Color(0xff707070),
+                                        selectedColor: Colors.white,
+                                        fillColor: Color(0Xff012766),
+                                        disabledColor: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(25),
+                                            topRight: Radius.circular(25)),
+                                        isSelected: isSelected,
+                                        onPressed: (index) {
+                                          setState(() {
+                                            for (int indexBtn = 0;
+                                                indexBtn < isSelected.length;
+                                                indexBtn++) {
+                                              if (indexBtn == index) {
+                                                isSelected[indexBtn] = true;
+                                              } else {
+                                                isSelected[indexBtn] = false;
+                                              }
+                                              _toggleIndex = index;
+                                            }
+                                          });
+                                        },
+                                      ),
+                                    )
+                                    //  ToggleSwitch(
+                                    //   initialLabelIndex: _toggleIndex,
+                                    //   totalSwitches: 2,
+                                    //   activeBgColor: [Color(0xFF012766)],
+                                    //   fontSize: 20.sp,
+                                    //   minHeight: 50.h,
+                                    //   // customTextStyles: [
+                                    //   //   TextStyle(
+                                    //   //     fontFamily: 'Poppins',
+                                    //   //     fontSize: 20,
+                                    //   //   ),
+                                    //   //   TextStyle(
+                                    //   //     fontFamily: 'Poppins',
+                                    //   //     fontSize: 20,
+                                    //   //   ),
+                                    //   // ],
+                                    //   activeFgColor: Colors.white,
+                                    //   minWidth: (double.infinity),
+                                    //   cornerRadius: 30.r,
+                                    //   inactiveBgColor: Colors.white,
+                                    //   borderWidth: 1.sp,
+                                    //   borderColor: [Color(0xff707070)],
+                                    //   labels: ['English', 'Sinhala'],
+                                    //   onToggle: (index) {
+                                    //     setState(() {
+                                    //       _toggleIndex = index!;
+                                    //     });
+                                    //   },
+                                    // ),
+                                    ),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 8.h),
+                                child: TextField(
+                                  controller: searchController,
+                                  decoration: InputDecoration(
+                                      hintText: 'Type text here',
+                                      border: InputBorder.none,
+                                      prefixIcon: Container(
+                                        width: 0,
+                                      ),
+                                      suffixIcon: searchController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () {
+                                                searchController.clear();
+                                                setState(() {
+                                                  _filterdWords = _words;
+                                                  sinhalaWord = null;
+                                                });
+                                              },
+                                              icon: const Icon(
+                                                Icons.cancel,
+                                                color: Color(0Xff012766),
+                                              ))),
+                                  textInputAction: TextInputAction.search,
+                                  style: TextStyle(fontSize: 20.sp),
+                                  textAlign: TextAlign.center,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _filterMethod(value);
+                                    });
+                                  },
+                                  onSubmitted: (value) {
+                                    try {
+                                      final result =
+                                          words.wordslist.firstWhere((element) {
+                                        if (_toggleIndex == 0) {
+                                          return element.engName == value;
+                                        }
+                                        return element.sinName == value;
+                                      }
+
+                                              // element.engName == value
+                                              );
+                                      setState(() {
+                                        if (_toggleIndex == 0) {
+                                          sinhalaWord = result.sinName;
+                                          typedText = result.engName;
+                                        } else {
+                                          sinhalaWord = result.engName;
+                                          typedText = result.sinName;
+                                        }
+                                      });
+                                    } catch (e) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: Text('No maching word found!'),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  searchController.clear();
+                                                  setState(() {
+                                                    sinhalaWord = null;
+                                                    _filterdWords = _words;
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Ok'))
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                              )
+                              // Container(padding: EdgeInsets.all(20),child: const Text('Type text here', style: TextStyle(
+                              //   fontSize: 20
+
+                              // ),
+                              // ))
+                            ],
                           ),
                         ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 40),
-                          child: TextField(
-                            controller: searchController,
-                            decoration: const InputDecoration(
-                              hintText: 'Type text here',
-                              border: InputBorder.none,
+                        Container(
+                          height: 50.h,
+                          width: double.infinity,
+                          margin: EdgeInsets.only(
+                              left: 15.w, right: 15.w, bottom: 15.h),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xff707070),
                             ),
-                            textInputAction: TextInputAction.search,
-                            style: const TextStyle(fontSize: 20),
-                            textAlign: TextAlign.center,
-                            onChanged: (value) {
-                              setState(() {
-                                _filterMethod(value);
-                              });
-                            },
-                            onSubmitted: (value) {
-                              try {
-                                final result =
-                                words.wordslist.firstWhere((element) {
-                                  if (_toggleIndex == 0) {
-                                    return element.engName == value;
-                                  }
-                                  return element.sinName == value;
-                                }
-
-                                  // element.engName == value
-                                );
-                                setState(() {
-                                  if (_toggleIndex == 0) {
-                                    sinhalaWord = result.sinName;
-                                  } else {
-                                    sinhalaWord = result.engName;
-                                  }
-                                });
-                              } catch (e) {
-                                AlertDialog(
-                                  title: const Text('No maching word'),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          // searchController.clear();
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('Ok'))
-                                  ],
-                                );
-                              }
-                            },
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.r)),
                           ),
-                        )
-                        // Container(padding: EdgeInsets.all(20),child: const Text('Type text here', style: TextStyle(
-                        //   fontSize: 20
+                          child: Center(
+                              child: sinhalaWord == null
+                                  ? Text(
+                                      'Result',
+                                      style: TextStyle(
+                                          color: Color(0xff707070),
+                                          fontSize: 20.sp),
+                                    )
+                                  : Text(sinhalaWord!,
+                                      style: TextStyle(fontSize: 20.sp))),
+                        ),
+                        _isLoading
+                            ? Container(
+                                child: Center(
+                                    child: const CircularProgressIndicator()),
+                                height: 230.h,
+                                width: double.infinity,
+                              )
+                            : Container(
+                                height: 230.h,
+                                margin:
+                                    EdgeInsets.only(left: 15.w, right: 15.w),
+                                padding: const EdgeInsets.only(top: 0),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xff707070),
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30.r)),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(30.r),
+                                  child: ListView.builder(
+                                      itemCount: _filterdWords.length,
+                                      itemBuilder: (context, index) {
+                                        return Card(
+                                          margin: EdgeInsets.only(bottom: 1.h),
+                                          child: ListTile(
+                                            onTap: () {
+                                              setState(() {
+                                                if (_toggleIndex == 0) {
+                                                  sinhalaWord =
+                                                      _filterdWords[index]
+                                                          .sinName!;
 
-                        // ),
-                        // ))
+                                                  typedText =
+                                                      _filterdWords[index]
+                                                          .engName!;
+                                                  searchController.text =
+                                                      typedText!;
+                                                } else {
+                                                  sinhalaWord =
+                                                      _filterdWords[index]
+                                                          .engName!;
+                                                  typedText =
+                                                      _filterdWords[index]
+                                                          .sinName!;
+                                                  searchController.text =
+                                                      typedText!;
+                                                }
+                                              });
+                                            },
+                                            title: _toggleIndex == 0
+                                                ? Text(
+                                                    '${_filterdWords[index].engName}',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 18.sp,
+                                                    ),
+                                                  )
+                                                : Text(
+                                                    '${_filterdWords[index].sinName}'),
+                                          ),
+                                        );
+                                      }),
+                                ),
+                              ),
                       ],
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    margin:
-                    const EdgeInsets.only(left: 15, right: 15, bottom: 15),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xff707070),
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    ),
-                    child: Center(
-                        child: sinhalaWord == null
-                            ? const Text(
-                          'Result',
-                          style: TextStyle(
-                              color: Color(0xff707070), fontSize: 20),
-                        )
-                            : Text(sinhalaWord!,
-                            style: const TextStyle(fontSize: 20))),
-                  ),
-                  if (_isLoading) Container(
-                    child:
-                    const Center(child: CircularProgressIndicator()),
-                    height: 250,
-                    width: double.infinity,
-                  ) else Container(
-                    height: 250,
-                    margin: const EdgeInsets.only(left: 15, right: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        color: const Color(0xff707070),
-                      ),
-                      borderRadius:
-                      const BorderRadius.all(Radius.circular(30)),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: ListView.builder(
-                          itemCount: _filterdWords.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              margin: const EdgeInsets.only(bottom: 1),
-                              child: ListTile(
-                                onTap: () {
-                                  setState(() {
-                                    if (_toggleIndex == 0) {
-                                      sinhalaWord =
-                                      _filterdWords[index].sinName!;
-                                    } else {
-                                      sinhalaWord =
-                                      _filterdWords[index].engName!;
-                                    }
-                                  });
-                                },
-                                title: _toggleIndex == 0
-                                    ? Text(
-                                    '${_filterdWords[index].engName}')
-                                    : Text(
-                                    '${_filterdWords[index].sinName}'),
-                              ),
-                            );
-                          }),
-                    ),
-                  ),
-                ],
+                ),
+                const Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: WaveWidget()),
+              ],
+            ),
+            Positioned(
+              bottom: 160.h,
+              right: 15.w,
+              child: TextButton(
+                // style: TextButton.styleFrom(
+                //   onSurface: Colors.white,
+                //   backgroundColor: Color(0Xff012766),
+                // ),
+                onPressed: () {
+                  searchController.clear();
+                  setState(() {
+                    sinhalaWord = null;
+                    _filterdWords = _words;
+                  });
+                },
+                child: Text(
+                  'Clear',
+                  style: TextStyle(fontSize: 15.sp, color: Color(0Xff012766)),
+                ),
               ),
             ),
-          ),
-          const Align(
-              alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
-        ],
+          ],
+        ),
       ),
     );
   }

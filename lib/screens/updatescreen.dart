@@ -17,9 +17,11 @@ class UpdateScreen extends StatelessWidget {
       drawer: DrawerWidget(
         scaffoldKey: _scaffoldKey,
       ),
-      body: UpdateBody(
-        scaffoldKey: _scaffoldKey,
-        id: productId,
+      body: SafeArea(
+        child: UpdateBody(
+          scaffoldKey: _scaffoldKey,
+          id: productId,
+        ),
       ),
     );
   }

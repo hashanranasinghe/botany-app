@@ -6,6 +6,7 @@ import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class UpdateBody extends StatefulWidget {
@@ -71,7 +72,7 @@ class _UpdateBodyState extends State<UpdateBody> {
 
   Widget _buildBotNameField() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       child: TextFormField(
         validator: (value) {
           if (value!.isEmpty) {
@@ -89,22 +90,22 @@ class _UpdateBodyState extends State<UpdateBody> {
         initialValue: _initValues['engName'],
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          contentPadding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "Botanical Name",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
   Widget _buildEnglishNameField() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       child: TextFormField(
         validator: (value) {
           if (value!.isEmpty) {
@@ -116,13 +117,13 @@ class _UpdateBodyState extends State<UpdateBody> {
         textInputAction: TextInputAction.done,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(5),
-          hintStyle: const TextStyle(
+          contentPadding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+          hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
           hintText: "Sinhala Name",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
         onSaved: (value) {
           _editedWord = Word(
@@ -135,25 +136,25 @@ class _UpdateBodyState extends State<UpdateBody> {
           _saveForm();
         },
       ),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
     );
   }
 
   Widget _buildUpdateButton() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 20.h),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+      margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
       child: TextButton(
         onPressed: () {
           _saveForm();
         },
         child: _isLoading
             ? const CircularProgressIndicator()
-            : const Text(
+            : Text(
                 'Update',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -163,37 +164,37 @@ class _UpdateBodyState extends State<UpdateBody> {
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)))),
+                    borderRadius: BorderRadius.circular(30.r)))),
       ),
     );
   }
 
   Widget _buildCancelButton() {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-      child: TextButton(
-        onPressed: () {
-          Navigator.of(context)
-              .pushReplacementNamed(UpdateSearchScreen.routeName);
-        },
-        child: const Text(
-          'Cancel',
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+        padding: EdgeInsets.only(top: 20.h),
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
+        child: TextButton(
+          onPressed: () {
+            Navigator.of(context)
+                .pushReplacementNamed(UpdateSearchScreen.routeName);
+          },
+          child: Text(
+            'Cancel',
+            style: TextStyle(
+              fontSize: 20.sp,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
-        ),
-        style: ButtonStyle(
+          style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(const Color(0xff102248)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)))),
-      ),
-    );
+                    borderRadius: BorderRadius.circular(30.r))),
+          ),
+        ));
   }
 
   @override
@@ -208,7 +209,7 @@ class _UpdateBodyState extends State<UpdateBody> {
           TopScreenWidget(
               scaffoldKey: widget.scaffoldKey,
               topLeft: Padding(
-                padding: const EdgeInsets.only(top: 30, right: 10),
+                padding: EdgeInsets.only(top: 30.h, right: 10.w),
                 child: IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -221,25 +222,24 @@ class _UpdateBodyState extends State<UpdateBody> {
                   key: _form,
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 150,
+                      SizedBox(
+                        height: 150.h,
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 15, right: 15),
+                        margin: EdgeInsets.only(left: 15.w, right: 15.w),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30)),
+                          borderRadius: BorderRadius.all(Radius.circular(30.r)),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Text(
+                            Text(
                               'Update',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 30,
+                                fontSize: 30.sp,
                               ),
                             ),
                             _buildBotNameField(),

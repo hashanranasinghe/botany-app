@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginBackground extends StatelessWidget {
   final Widget child;
@@ -12,8 +13,8 @@ class LoginBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
-      width: double.infinity,
-      height: size.height,
+     // width: double.infinity,
+      //height: size.height,
       child: Stack(
         alignment: Alignment.topCenter,
         children: <Widget>[
@@ -21,17 +22,16 @@ class LoginBackground extends StatelessWidget {
           Positioned(
             top: 0,
             child: Container(
-              height:200,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   color: Colors.green,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30))
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(30.r),topLeft: Radius.circular(30.r))
               ),
             ),
           ),
           Positioned(
-            bottom: 5 ,
+            bottom: 5.h ,
             child: SizedBox(
-                height: 200, width: 200,child: Image.asset('assets/images/logo_1.png')),),
+                height: 100.h, width:100.w,child: Image.asset('assets/images/logo_1.png')),),
           child,
         ],
       ),
