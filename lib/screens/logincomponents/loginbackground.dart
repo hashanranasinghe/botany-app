@@ -5,7 +5,8 @@ class LoginBackground extends StatelessWidget {
   final Widget child;
   const LoginBackground({
     Key? key,
-    required this.size, required this.child,
+    required this.size,
+    required this.child,
   }) : super(key: key);
 
   final Size size;
@@ -13,7 +14,7 @@ class LoginBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
-     // width: double.infinity,
+      // width: double.infinity,
       //height: size.height,
       child: Stack(
         alignment: Alignment.topCenter,
@@ -24,14 +25,18 @@ class LoginBackground extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.green,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(30.r),topLeft: Radius.circular(30.r))
-              ),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30.r),
+                      topLeft: Radius.circular(30.r))),
             ),
           ),
           Positioned(
-            bottom: 5.h ,
+            bottom: 0,
             child: SizedBox(
-                height: 100.h, width:100.w,child: Image.asset('assets/images/logo_1.png')),),
+                height: 100.h,
+                width: 100.w,
+                child: Image.asset('assets/images/logo_1.png')),
+          ),
           child,
         ],
       ),

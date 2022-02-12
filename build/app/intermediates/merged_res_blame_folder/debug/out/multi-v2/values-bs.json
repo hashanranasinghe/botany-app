@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
+            "outputFile": "D:\\flutterprojects\\New folder\\botany-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\0700e94fe7426ba86bbb0c9737103ff6\\jetified-play-services-basement-18.0.0\\res\\values-bs\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "136",
-                        "endOffsets": "331"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1047",
-                        "endColumns": "140",
-                        "endOffsets": "1183"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\1a37840c444969e7cdbed7928a8ad918\\jetified-play-services-base-18.0.1\\res\\values-bs\\values.xml",
+                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\1a37840c444969e7cdbed7928a8ad918\\jetified-play-services-base-18.0.1\\res\\values-bs\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values-bs\\values-bs.xml",
+                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\0700e94fe7426ba86bbb0c9737103ff6\\jetified-play-services-basement-18.0.0\\res\\values-bs\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "136",
+                        "endOffsets": "331"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1047",
+                        "endColumns": "140",
+                        "endOffsets": "1183"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values-bs\\values-bs.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
