@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import '../deletesearchscreen.dart';
 import '../searchscreen.dart';
 
@@ -60,7 +59,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
           .toList();
     });
   }
-
+  List<bool> isSelected = [true, false];
   @override
   Widget build(BuildContext context) {
     final words = Provider.of<Words>(context);
@@ -104,7 +103,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
               padding: const EdgeInsets.only(top: 0),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xff707070),
+                  color: const Color(0xff707070),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(30.r)),
               ),
@@ -114,39 +113,38 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                     itemCount: _filterdWords.length,
                     itemBuilder: (context, index) {
                       return Card(
-                        margin: EdgeInsets.only(bottom: 1.h),
+                       margin: EdgeInsets.only(bottom: 1.h),
                         child: ListTile(
                           trailing: IconButton(
                               onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          'Dou you really wan\'t to delete? '),
+                                showCupertinoDialog(context: context,
+                                    builder:(context) => CupertinoAlertDialog(
+                                      content: const Text('Do you really want to delete?',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 20,
+                                        ),),
                                       actions: [
-                                        FlatButton(
+                                        CupertinoDialogAction(
+                                          child: const Text('No'),
                                           onPressed: () {
                                             Navigator.pop(context);
-                                          },
-                                          child: Text('No'),
-                                        ),
-                                        FlatButton(
-                                            onPressed: () {
-                                              Provider.of<Words>(context,
-                                                      listen: false)
-                                                  .deleteProduct(
-                                                      _filterdWords[index].id);
-                                              Navigator.of(context)
-                                                  .pushReplacementNamed(
-                                                      DeleteSearchScreen
-                                                          .routeName);
-                                            },
-                                            child: Text('Yes'))
+                                          },),
+                                        CupertinoDialogAction(
+                                          child: const Text('Yes'),
+                                          onPressed: () {
+                                            Provider.of<Words>(context,
+                                                listen: false)
+                                                .deleteProduct(
+                                                _filterdWords[index].id);
+                                            Navigator.of(context)
+                                                .pushReplacementNamed(
+                                                DeleteSearchScreen
+                                                    .routeName);
+                                          },)
                                       ],
-                                    );
-                                  },
-                                );
+                                    ));
+
                               },
                               // Navigator.of(context).pushNamed(
                               //     UpdateScreen.routeName,
@@ -173,13 +171,14 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
     );
   }
 
-  // Widget _buildSearchfield(){
+
+
   Widget _buildTopic() {
     return Container(
       padding: EdgeInsets.only(bottom: 10.h),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.delete_outline_outlined,
             color: Colors.black,
           ),

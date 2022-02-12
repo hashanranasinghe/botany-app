@@ -37,10 +37,6 @@ class _SearchScreenState extends State<SearchScreen> {
   FocusNode focusNodeButton2 = FocusNode();
   List<FocusNode>? focusToggle;
 
-
-
-
-
   @override
   void didChangeDependencies() {
     if (_isInit) {
@@ -124,14 +120,14 @@ class _SearchScreenState extends State<SearchScreen> {
                           margin: EdgeInsets.only(
                               left: 15.w, right: 15.w, top: 15.h, bottom: 15.h),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff707070)),
+                            border: Border.all(color: const Color(0xff707070)),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30.r)),
                           ),
                           child: Column(
                             children: [
                               Expanded(
-                                child: Container(
+                                child: SizedBox(
                                     width: double.infinity,
                                     child: LayoutBuilder(
                                       builder: (context, con) => ToggleButtons(
@@ -154,11 +150,11 @@ class _SearchScreenState extends State<SearchScreen> {
                                           )
                                         ],
                                         borderWidth: 1,
-                                        borderColor: Color(0xff707070),
+                                        borderColor: const Color(0xff707070),
                                         selectedColor: Colors.white,
-                                        fillColor: Color(0Xff012766),
+                                        fillColor: const Color(0Xff012766),
                                         disabledColor: Colors.white,
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(25),
                                             topRight: Radius.circular(25)),
                                         isSelected: isSelected,
@@ -269,7 +265,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       showDialog(
                                         context: context,
                                         builder: (context) => AlertDialog(
-                                          title: Text('No maching word found!'),
+                                          title: const Text('No maching word found!'),
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
@@ -280,7 +276,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   });
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text('Ok'))
+                                                child: const Text('Ok'))
                                           ],
                                         ),
                                       );
@@ -303,7 +299,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               left: 15.w, right: 15.w, bottom: 15.h),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Color(0xff707070),
+                              color: const Color(0xff707070),
                             ),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30.r)),
@@ -313,7 +309,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ? Text(
                                       'Result',
                                       style: TextStyle(
-                                          color: Color(0xff707070),
+                                          color: const Color(0xff707070),
                                           fontSize: 20.sp),
                                     )
                                   : Text(sinhalaWord!,
@@ -321,8 +317,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                         _isLoading
                             ? Container(
-                                child: Center(
-                                    child: const CircularProgressIndicator()),
+                                child: const Center(
+                                    child: CircularProgressIndicator()),
                                 height: 230.h,
                                 width: double.infinity,
                               )
@@ -333,7 +329,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 padding: const EdgeInsets.only(top: 0),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Color(0xff707070),
+                                    color: const Color(0xff707070),
                                   ),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30.r)),
@@ -411,7 +407,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 },
                 child: Text(
                   'Clear',
-                  style: TextStyle(fontSize: 15.sp, color: Color(0Xff012766)),
+                  style: TextStyle(fontSize: 15.sp, color: const Color(0Xff012766)),
                 ),
               ),
             ),

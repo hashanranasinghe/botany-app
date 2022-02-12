@@ -1,6 +1,7 @@
 import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/screens/deletesearchscreen.dart';
+import 'package:botanyapp/screens/detailsscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:botanyapp/screens/singpupage.dart';
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
             UpdateScreen.routeName: (ctx) => UpdateScreen(),
             VerificationEmailScreen.routeName: (ctx) => const VerificationEmailScreen(),
             ResetScreen.routeName : (ctx) => ResetScreen(),
+            DetailsScreen.routeName: (ctx) => const DetailsScreen(),
           },
         ),
         designSize: const Size(428, 800),

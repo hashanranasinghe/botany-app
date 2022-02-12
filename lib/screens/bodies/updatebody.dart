@@ -1,12 +1,13 @@
 import 'package:botanyapp/models/word.dart';
 import 'package:botanyapp/models/word_list_provider.dart';
-import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class UpdateBody extends StatefulWidget {
@@ -65,7 +66,10 @@ class _UpdateBodyState extends State<UpdateBody> {
     setState(() {
       _isLoading = false;
     });
+
     Navigator.of(context).pushReplacementNamed(UpdateSearchScreen.routeName);
+    Fluttertoast.showToast(msg: "Update the word.",
+        toastLength: Toast.LENGTH_LONG);
   }
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -147,7 +151,27 @@ class _UpdateBodyState extends State<UpdateBody> {
       margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
       child: TextButton(
         onPressed: () {
-          _saveForm();
+
+          showCupertinoDialog(context: context,
+              builder:(context) => CupertinoAlertDialog(
+                content: const Text('Do you want to update this?',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                  ),),
+                actions: [
+                  CupertinoDialogAction(
+                    child: const Text('No'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },),
+                  CupertinoDialogAction(
+                    child: const Text('Yes'),
+                    onPressed: () {
+                      _saveForm();
+                    },)
+                ],
+              ));
         },
         child: _isLoading
             ? const CircularProgressIndicator()

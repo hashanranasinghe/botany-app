@@ -5,6 +5,7 @@ import 'package:botanyapp/widgets/wavewidget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../searchscreen.dart';
@@ -68,7 +69,11 @@ class _AddBodyState extends State<AddBody> {
     // setState(() {
     //   _isLoading = false;
     // });
+    Fluttertoast.showToast(msg: "Add to the word list",
+        toastLength: Toast.LENGTH_LONG);
     Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+
+
   }
 
   Widget _buildBotNameField(BuildContext context) {
@@ -140,7 +145,7 @@ class _AddBodyState extends State<AddBody> {
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildSaveButton(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 20.h),
       width: double.infinity,
@@ -148,6 +153,8 @@ class _AddBodyState extends State<AddBody> {
       child: TextButton(
         onPressed: () {
           _saveForm();
+
+
         },
         child: Text(
           'Save',
@@ -245,7 +252,7 @@ class _AddBodyState extends State<AddBody> {
                             title: Row(
                               children: <Widget>[
                                 Expanded(child: (_buildCancelButton())),
-                                Expanded(child: _buildSaveButton()),
+                                Expanded(child: _buildSaveButton(context)),
                               ],
                             ),
                           ),

@@ -292,7 +292,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       }).catchError((e)
       {
-        Fluttertoast.showToast(msg: e!.message);
+        Fluttertoast.showToast(msg: 'The email address is already taken.',
+        toastLength: Toast.LENGTH_LONG,
+        );
+
       });
     }
 
