@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:botanyapp/screens/searchscreen.dart';
+import 'package:botanyapp/screens/singpupscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,8 @@ class _VerificationEmailScreenState extends State<VerificationEmailScreen> {
     });
 
     if(isEmailVerify) timer?.cancel();
+    Fluttertoast.showToast(msg: 'Signup Successfully',
+    toastLength: Toast.LENGTH_LONG);
   }
   Future sendVerificationEmail() async{
     try {
@@ -61,7 +64,7 @@ class _VerificationEmailScreenState extends State<VerificationEmailScreen> {
 
 
     }catch(e){
-      Fluttertoast.showToast(msg: e.toString());
+      Fluttertoast.showToast(msg: 'Please check your emails or Enter your details again.');
     }
   }
 
@@ -79,6 +82,7 @@ class _VerificationEmailScreenState extends State<VerificationEmailScreen> {
               children: <Widget>[
 
                 const Text("A verification email has sent to your email.",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
@@ -136,7 +140,11 @@ class _VerificationEmailScreenState extends State<VerificationEmailScreen> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(const Color(0xffc6c9cd)),
                   ),
-                  onPressed: () => FirebaseAuth.instance.signOut()
+                  onPressed: (){ FirebaseAuth.instance.signOut();
+                        Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
+
+
+                      }
 
                       ),
                 ),

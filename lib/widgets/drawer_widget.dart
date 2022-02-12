@@ -1,5 +1,6 @@
 import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/screens/deletesearchscreen.dart';
+import 'package:botanyapp/screens/detailsscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';
@@ -25,16 +26,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getValidationData().whenComplete(() async{
-
-      if(finalEmail == null){
-
-      }else{
-
-      }
-
-    });
-
+    getValidationData();
 
   }
 
@@ -81,7 +73,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
@@ -104,7 +96,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
@@ -123,7 +115,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
@@ -143,7 +135,27 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+                    fontSize: 20.sp,
+                  ),
+                ),
+              ),
+              const Divider(
+                thickness: 2,
+              ),
+
+
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).pushNamed(DetailsScreen.routeName);
+                },
+                leading: const Icon(Icons.details_outlined,
+                    color: Colors.black),
+                title: Text(
+                  'Details',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
@@ -159,16 +171,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 },
                 leading: const Icon(Icons.logout_outlined,
                     color: Colors.black),
-                title: const Text(
+                title: Text(
                   'Log Out',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
-              const Padding(padding: EdgeInsets.only(top: 0.3)),
+              Padding(padding: EdgeInsets.only(top: 0.3.h)),
               Stack(
                 children: [
                   Positioned(

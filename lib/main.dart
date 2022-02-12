@@ -4,7 +4,7 @@ import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/detailsscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/screens/singpupage.dart';
+import 'package:botanyapp/screens/singpupscreen.dart';
 import 'package:botanyapp/screens/splashscreen.dart';
 import 'package:botanyapp/screens/updatescreen.dart';
 import 'package:botanyapp/screens/updatesearchscreen.dart';

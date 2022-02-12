@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../singpupage.dart';
+import '../singpupscreen.dart';
 import 'loginbackground.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,7 +44,7 @@ class _LoginBodyState extends State<LoginBody> {
             fontFamily: 'Poppins',
             fontSize: 20.sp,
           ),
-          hintText: "UserName",
+          hintText: "User email",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30.r)),
         ),
       ),
@@ -170,7 +170,9 @@ class _LoginBodyState extends State<LoginBody> {
                     .pushReplacementNamed(SearchScreen.routeName),
               })
           .catchError((e) {
-        Fluttertoast.showToast(msg: e.toString());
+        Fluttertoast.showToast(msg: 'Incorrect Email or Password.',
+        toastLength: Toast.LENGTH_LONG
+        );
       });
     }
   }
@@ -227,13 +229,16 @@ class Validator {
   }
 
   static String? PasswordValidate(String passwordValue) {
+    RegExp regex =
+    RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
     if (passwordValue.isEmpty) {
       return "Password Cannot be Empty";
-    } else if (!passwordValue.contains(RegExp(r'[a-zA-Z0-9]'))) {
+    } else if (!regex.hasMatch(passwordValue)) {
       return "Invalid Password";
-    } else if (passwordValue.length < 6) {
+    }else if(passwordValue.length < 6){
       return "Enter valid Password.(Min. 6 characters)";
     }
     return null;
   }
+
 }

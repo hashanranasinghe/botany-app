@@ -1,46 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\flutterprojects\\New folder\\botany-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\1a37840c444969e7cdbed7928a8ad918\\jetified-play-services-base-18.0.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,33,46",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "215,301,377,463,549,625,702,778,951,1052,1233,1354,1457,1637,1756,1868,1967,2155,2256,2437,2558,2733,2877,2936,2994,3164,3475",
-                        "endLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,45,64",
-                        "endColumns": "85,75,85,85,75,76,75,75,100,180,120,102,179,118,111,98,187,100,180,120,174,143,58,57,74,20,20",
-                        "endOffsets": "300,376,462,548,624,701,777,853,1051,1232,1353,1456,1636,1755,1867,1966,2154,2255,2436,2557,2732,2876,2935,2993,3068,3474,3887"
-                    },
-                    "to": {
-                        "startLines": "10,11,12,13,14,15,16,17,100,101,102,103,104,105,106,107,109,110,111,112,113,114,115,116,117,388,401",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "635,725,805,895,985,1065,1146,1226,6294,6399,6580,6705,6812,6992,7115,7231,7501,7689,7794,7975,8100,8275,8423,8486,8548,25134,25449",
-                        "endLines": "10,11,12,13,14,15,16,17,100,101,102,103,104,105,106,107,109,110,111,112,113,114,115,116,117,400,419",
-                        "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
-                        "endOffsets": "720,800,890,980,1060,1141,1221,1301,6394,6575,6700,6807,6987,7110,7226,7329,7684,7789,7970,8095,8270,8418,8481,8543,8622,25444,25861"
-                    }
-                },
-                {
-                    "source": "D:\\flutterprojects\\New folder\\botany-app\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,327,409,513,622,742,846",
-                        "endColumns": "143,127,81,103,108,119,103,80",
-                        "endOffsets": "194,322,404,508,617,737,841,922"
-                    },
-                    "to": {
-                        "startLines": "118,119,120,121,122,123,124,125",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "8627,8771,8899,8981,9085,9194,9314,9418",
-                        "endColumns": "143,127,81,103,108,119,103,80",
-                        "endOffsets": "8766,8894,8976,9080,9189,9309,9413,9494"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\bd0e4b9504718f16ee157ad510b510f3\\coordinatorlayout-1.0.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\bd0e4b9504718f16ee157ad510b510f3\\coordinatorlayout-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,102,3,13",
                         "startColumns": "4,4,4,4",
@@ -59,43 +23,60 @@
                     }
                 },
                 {
-                    "source": "D:\\flutterprojects\\New folder\\botany-app\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,821",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "472,987"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
                     },
                     "to": {
-                        "startLines": "127,132",
-                        "startColumns": "4,4",
-                        "startOffsets": "9570,9867",
-                        "endLines": "131,134",
-                        "endColumns": "12,12",
-                        "endOffsets": "9862,10031"
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "1306",
+                        "endColumns": "56",
+                        "endOffsets": "1358"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\0700e94fe7426ba86bbb0c9737103ff6\\jetified-play-services-basement-18.0.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\7834121e970a9fca3659c06d33f5e5da\\browser-1.0.0\\res\\values\\values.xml",
                     "from": {
-                        "startLines": "4,7",
-                        "startColumns": "0,0",
-                        "startOffsets": "243,406",
-                        "endColumns": "63,166",
-                        "endOffsets": "306,572"
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,113,179,242,304,375",
+                        "endColumns": "57,65,62,61,70,71",
+                        "endOffsets": "108,174,237,299,370,442"
                     },
                     "to": {
-                        "startLines": "98,108",
-                        "startColumns": "4,4",
-                        "startOffsets": "6156,7334",
-                        "endColumns": "67,166",
-                        "endOffsets": "6219,7496"
+                        "startLines": "6,7,8,9,21,22",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "386,444,510,573,1495,1566",
+                        "endColumns": "57,65,62,61,70,71",
+                        "endOffsets": "439,505,568,630,1561,1633"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\1a37840c444969e7cdbed7928a8ad918\\jetified-play-services-base-18.0.1\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,33,46",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "215,301,377,463,549,625,702,778,951,1052,1233,1354,1457,1637,1756,1868,1967,2155,2256,2437,2558,2733,2877,2936,2994,3164,3475",
+                        "endLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,45,64",
+                        "endColumns": "85,75,85,85,75,76,75,75,100,180,120,102,179,118,111,98,187,100,180,120,174,143,58,57,74,20,20",
+                        "endOffsets": "300,376,462,548,624,701,777,853,1051,1232,1353,1456,1636,1755,1867,1966,2154,2255,2436,2557,2732,2876,2935,2993,3068,3474,3887"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15,16,17,100,101,102,103,104,105,106,107,109,110,111,112,113,114,115,116,117,388,401",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "635,725,805,895,985,1065,1146,1226,6294,6399,6580,6705,6812,6992,7115,7231,7501,7689,7794,7975,8100,8275,8423,8486,8548,25134,25449",
+                        "endLines": "10,11,12,13,14,15,16,17,100,101,102,103,104,105,106,107,109,110,111,112,113,114,115,116,117,400,419",
+                        "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
+                        "endOffsets": "720,800,890,980,1060,1141,1221,1301,6394,6575,6700,6807,6987,7110,7226,7329,7684,7789,7970,8095,8270,8418,8481,8543,8622,25444,25861"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,89,90,94,95,96,97,104,111,159,191,228",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -114,37 +95,56 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\7834121e970a9fca3659c06d33f5e5da\\browser-1.0.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\0700e94fe7426ba86bbb0c9737103ff6\\jetified-play-services-basement-18.0.0\\res\\values\\values.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,113,179,242,304,375",
-                        "endColumns": "57,65,62,61,70,71",
-                        "endOffsets": "108,174,237,299,370,442"
+                        "startLines": "4,7",
+                        "startColumns": "0,0",
+                        "startOffsets": "243,406",
+                        "endColumns": "63,166",
+                        "endOffsets": "306,572"
                     },
                     "to": {
-                        "startLines": "6,7,8,9,21,22",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "386,444,510,573,1495,1566",
-                        "endColumns": "57,65,62,61,70,71",
-                        "endOffsets": "439,505,568,630,1561,1633"
+                        "startLines": "98,108",
+                        "startColumns": "4,4",
+                        "startOffsets": "6156,7334",
+                        "endColumns": "67,166",
+                        "endOffsets": "6219,7496"
                     }
                 },
                 {
-                    "source": "D:\\flutterprojects\\New folder\\botany-app\\android\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "F:\\Flutter\\botanyapp\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endColumns": "56",
-                        "endOffsets": "109"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,327,409,513,622,742,846",
+                        "endColumns": "143,127,81,103,108,119,103,80",
+                        "endOffsets": "194,322,404,508,617,737,841,922"
                     },
                     "to": {
-                        "startLines": "18",
-                        "startColumns": "4",
-                        "startOffsets": "1306",
-                        "endColumns": "56",
-                        "endOffsets": "1358"
+                        "startLines": "118,119,120,121,122,123,124,125",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "8627,8771,8899,8981,9085,9194,9314,9418",
+                        "endColumns": "143,127,81,103,108,119,103,80",
+                        "endOffsets": "8766,8894,8976,9080,9189,9309,9413,9494"
+                    }
+                },
+                {
+                    "source": "F:\\Flutter\\botanyapp\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,821",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,987"
+                    },
+                    "to": {
+                        "startLines": "127,132",
+                        "startColumns": "4,4",
+                        "startOffsets": "9570,9867",
+                        "endLines": "131,134",
+                        "endColumns": "12,12",
+                        "endOffsets": "9862,10031"
                     }
                 }
             ]
