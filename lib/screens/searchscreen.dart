@@ -10,8 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-
-
 class SearchScreen extends StatefulWidget {
   static const routeName = 'search_screen';
   SearchScreen({Key? key}) : super(key: key);
@@ -36,10 +34,6 @@ class _SearchScreenState extends State<SearchScreen> {
   FocusNode focusNodeButton1 = FocusNode();
   FocusNode focusNodeButton2 = FocusNode();
   List<FocusNode>? focusToggle;
-
-
-
-
 
   @override
   void didChangeDependencies() {
@@ -74,7 +68,6 @@ class _SearchScreenState extends State<SearchScreen> {
           .toList();
     });
   }
-
 
   @override
   void initState() {
@@ -163,14 +156,23 @@ class _SearchScreenState extends State<SearchScreen> {
                                             topRight: Radius.circular(25)),
                                         isSelected: isSelected,
                                         onPressed: (index) {
+                                          var temp;
                                           setState(() {
                                             for (int indexBtn = 0;
                                                 indexBtn < isSelected.length;
                                                 indexBtn++) {
                                               if (indexBtn == index) {
                                                 isSelected[indexBtn] = true;
+                                                setState(() {
+                                                  searchController.text = '';
+                                                  sinhalaWord = null;
+                                                });
                                               } else {
                                                 isSelected[indexBtn] = false;
+                                                setState(() {
+                                                  searchController.text = '';
+                                                  sinhalaWord = null;
+                                                });
                                               }
                                               _toggleIndex = index;
                                             }

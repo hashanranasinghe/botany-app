@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\Flutter\\botanyapp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "D:\\flutterprojects\\New folder\\botany-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\Maduka\\.gradle\\caches\\transforms-2\\files-2.1\\d710d53eeee75f2a57d0213959f1b1f6\\core-1.6.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return const Scaffold(
-      body: SafeArea(child: LoginBody()),
+      body: LoginBody(),
     );
   }
 }

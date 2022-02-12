@@ -97,9 +97,9 @@ class _LoginBodyState extends State<LoginBody> {
       margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 40.w),
       child: TextButton(
         onPressed: () async {
-
           signIn(emailController.text, passwordController.text);
-          final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          final SharedPreferences sharedPreferences =
+              await SharedPreferences.getInstance();
           sharedPreferences.setString('email', emailController.text);
         },
         child: Text(
@@ -132,14 +132,17 @@ class _LoginBodyState extends State<LoginBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: 350.h,
+                height: 320.h,
               ),
-              Text(
-                'Login',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.sp,
+              Padding(
+                padding: EdgeInsets.only(bottom: 10.h),
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.sp,
+                  ),
                 ),
               ),
               _buildUsernameField(),
@@ -147,6 +150,9 @@ class _LoginBodyState extends State<LoginBody> {
               _buildLoginButton(),
               _buildForgetPassword(context),
               _buildCreateAccount(context),
+              Container(
+                height: 100.h,
+              )
             ],
           ),
         ),
@@ -154,22 +160,20 @@ class _LoginBodyState extends State<LoginBody> {
     );
   }
 
-  Future<void> signIn(String email,String password) async {
-    if(formKey.currentState!.validate()){
-      await _auth.signInWithEmailAndPassword(email: email, password: password)
+  Future<void> signIn(String email, String password) async {
+    if (formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
-        Fluttertoast.showToast(msg: "Login Successful"),
-        Navigator.of(context).pushReplacementNamed(SearchScreen.routeName),
-      }).catchError((e)
-      {
+                Fluttertoast.showToast(msg: "Login Successful"),
+                Navigator.of(context)
+                    .pushReplacementNamed(SearchScreen.routeName),
+              })
+          .catchError((e) {
         Fluttertoast.showToast(msg: e.toString());
-      }
-      );
+      });
     }
   }
-
-
-
 }
 
 Widget _buildForgetPassword(BuildContext context) {
@@ -177,13 +181,14 @@ Widget _buildForgetPassword(BuildContext context) {
     alignment: Alignment.bottomRight,
     padding: EdgeInsets.only(right: 40.w),
     child: TextButton(
-      child: Text('Forget your Password?',
+      child: Text(
+        'Forget your Password?',
         style: TextStyle(
           fontFamily: 'Poppins',
           fontSize: 15.sp,
         ),
       ),
-      onPressed: (){
+      onPressed: () {
         Navigator.of(context).pushReplacementNamed(ResetScreen.routeName);
       },
     ),
@@ -191,15 +196,16 @@ Widget _buildForgetPassword(BuildContext context) {
 }
 
 Widget _buildCreateAccount(BuildContext context) {
-  return SizedBox(
+  return Container(
+    padding: EdgeInsets.only(right: 40.w),
     height: 40.h,
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         const Text("Don't have an account? "),
         TextButton(
           child: const Text('Create'),
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
           },
         ),
@@ -225,10 +231,9 @@ class Validator {
       return "Password Cannot be Empty";
     } else if (!passwordValue.contains(RegExp(r'[a-zA-Z0-9]'))) {
       return "Invalid Password";
-    }else if(passwordValue.length < 6){
+    } else if (passwordValue.length < 6) {
       return "Enter valid Password.(Min. 6 characters)";
     }
     return null;
   }
 }
-
