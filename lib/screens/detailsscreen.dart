@@ -28,7 +28,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
         FirebaseFirestore db = FirebaseFirestore.instance;
         db.collection("users").get().then((value) =>  count= (value.size - 1));
-
+print(count.toString());
 
 
 
