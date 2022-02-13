@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:7:4-37:19
+INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:4:4-34:19
 MERGED from [:firebase_auth] F:\Flutter\botanyapp\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] F:\Flutter\botanyapp\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] F:\Flutter\botanyapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
@@ -36,19 +36,17 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\AC
 	android:name
 		INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
-MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
+ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
+INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
+MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
 MERGED from [:shared_preferences_android] F:\Flutter\botanyapp\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_auth] F:\Flutter\botanyapp\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] F:\Flutter\botanyapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] F:\Flutter\botanyapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:app_settings] F:\Flutter\botanyapp\build\app_settings\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:fluttertoast] F:\Flutter\botanyapp\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\5585ea124cbf04e50215dfdc48fd430c\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
@@ -102,30 +100,18 @@ INJECTED from F:\Flutter\botanyapp\android\app\src\debug\AndroidManifest.xml:1:1
 		INJECTED from F:\Flutter\botanyapp\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
 		INJECTED from F:\Flutter\botanyapp\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:1-35:12
 		INJECTED from F:\Flutter\botanyapp\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:1:11-69
-uses-permission#android.permission.BLUETOOTH
-ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:5-68
-	android:name
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:22-65
-uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:4:5-74
-	android:name
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:4:22-71
-uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:5:5-80
-	android:name
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:5:22-78
 uses-permission#android.permission.INTERNET
-ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:6:5-66
-MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:6:5-66
-MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:6:5-66
+ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:5-66
+MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:5-66
+MERGED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:5-66
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
@@ -133,7 +119,7 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\cac
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:14:5-67
 	android:name
-		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:6:22-64
+		ADDED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml:3:22-64
 uses-sdk
 INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\Flutter\botanyapp\android\app\src\main\AndroidManifest.xml
@@ -146,14 +132,10 @@ MERGED from [:cloud_firestore] F:\Flutter\botanyapp\build\cloud_firestore\interm
 MERGED from [:cloud_firestore] F:\Flutter\botanyapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] F:\Flutter\botanyapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] F:\Flutter\botanyapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:app_settings] F:\Flutter\botanyapp\build\app_settings\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:app_settings] F:\Flutter\botanyapp\build\app_settings\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] F:\Flutter\botanyapp\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] F:\Flutter\botanyapp\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:7:5-9:41
@@ -289,15 +271,13 @@ ADDED from [:firebase_core] F:\Flutter\botanyapp\build\firebase_core\intermediat
 	android:name
 		ADDED from [:firebase_core] F:\Flutter\botanyapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
-MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
+ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:13:5-79
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\96965e926b327dbf331b9e4ef39cd7a1\jetified-grpc-android-1.41.0\AndroidManifest.xml:11:5-79
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\96965e926b327dbf331b9e4ef39cd7a1\jetified-grpc-android-1.41.0\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-76
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:22-76
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents
