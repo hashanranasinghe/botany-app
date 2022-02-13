@@ -126,12 +126,20 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                                         ),),
                                       actions: [
                                         CupertinoDialogAction(
-                                          child: const Text('No'),
+                                          child: const Text('No',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 20,
+                                            ),),
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },),
                                         CupertinoDialogAction(
-                                          child: const Text('Yes'),
+                                          child: const Text('Yes',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 20,
+                                            ),),
                                           onPressed: () {
                                             Provider.of<Words>(context,
                                                 listen: false)

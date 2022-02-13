@@ -31,10 +31,10 @@ Future<void> main() async {
   // ),
   runApp(
     const MyApp(),
-    // DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => const MyApp(), // Wrap your app
-    // ),
+  //   // DevicePreview(
+  //   //   enabled: !kReleaseMode,
+  //   //   builder: (context) => const MyApp(), // Wrap your app
+  //   // ),
   );
 }
 
