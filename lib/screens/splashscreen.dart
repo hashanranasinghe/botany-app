@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     setState(() {
       _connectionStatus = result;
-      if(_connectionStatus.toString() == "ConnectivityResult.wifi" || _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ){
+      if( _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ){
         connection(context);
       }
 

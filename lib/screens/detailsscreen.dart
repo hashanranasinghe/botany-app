@@ -17,7 +17,7 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
 
-  var count;
+  // var count;
 
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -26,9 +26,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     var wordlist = Provider.of<Words>(context);
 
-        FirebaseFirestore db = FirebaseFirestore.instance;
-        db.collection("users").get().then((value) =>  count= (value.size - 1));
-print(count.toString());
+//         FirebaseFirestore db = FirebaseFirestore.instance;
+//         db.collection("users").get().then((value) =>  count= (value.size - 1));
+// print(count.toString());
 
 
 
@@ -83,36 +83,36 @@ print(count.toString());
                     const Padding(padding: EdgeInsets.only(left: 20)),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Padding(padding: EdgeInsets.only(left: 20)),
-                    SizedBox(
-                      width: 300,
-                      child: Text('The number of users currently using the app ',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20.sp,
-                        ),),
-                    ),
-                    Text('=',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20.sp,
-                      ),),
-                    Text(count.toString(),
-                      style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold
-                      ),),
-                    const Padding(padding: EdgeInsets.only(left: 20)),
-                  ],
-                ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     const Padding(padding: EdgeInsets.only(left: 20)),
+                //     SizedBox(
+                //       width: 300,
+                //       child: Text('The number of users currently using the app ',
+                //         textAlign: TextAlign.center,
+                //         style: TextStyle(
+                //           fontFamily: 'Poppins',
+                //           fontSize: 20.sp,
+                //         ),),
+                //     ),
+                //     Text('=',
+                //       style: TextStyle(
+                //         fontFamily: 'Poppins',
+                //         fontSize: 20.sp,
+                //       ),),
+                //     Text(count.toString(),
+                //       style: TextStyle(
+                //           fontFamily: 'Poppins',
+                //           fontSize: 20.sp,
+                //           fontWeight: FontWeight.bold
+                //       ),),
+                //     const Padding(padding: EdgeInsets.only(left: 20)),
+                //   ],
+                // ),
               ],
             ),
             const Align(
