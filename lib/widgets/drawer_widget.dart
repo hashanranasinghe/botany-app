@@ -84,7 +84,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ListTile(
                 onTap: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(AddScreen.routeName);
+                      .pushNamed(AddScreen.routeName);
                 },
                 leading: const Icon(
                   Icons.add_box_outlined,
@@ -107,7 +107,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ListTile(
                 onTap: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(UpdateSearchScreen.routeName);
+                      .pushNamed(UpdateSearchScreen.routeName);
                 },
                 leading: const Icon(Icons.update_outlined, color: Colors.black),
                 title: Text(
@@ -126,7 +126,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ListTile(
                 onTap: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(DeleteSearchScreen.routeName);
+                      .pushNamed(DeleteSearchScreen.routeName);
                 },
                 leading: const Icon(Icons.delete_outline_outlined,
                     color: Colors.black),
