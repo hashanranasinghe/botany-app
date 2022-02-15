@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../deletesearchscreen.dart';
 import '../searchscreen.dart';
+import 'package:string_extensions/string_extensions.dart';
 
 class DeleteSearchBody extends StatefulWidget {
   DeleteSearchBody({Key? key}) : super(key: key);
@@ -98,7 +99,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
               height: 70.h,
             ),
             Container(
-              height: 250,
+              height: 350.h,
               margin: EdgeInsets.only(left: 25.w, right: 25.w),
               padding: const EdgeInsets.only(top: 0),
               decoration: BoxDecoration(
@@ -162,7 +163,7 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
                                 Icons.delete,
                                 color: Colors.black,
                               )),
-                          title: Text('${_filterdWords[index].engName}'),
+                          title: Text('${_filterdWords[index].engName.capitalize}'),
                         ),
                       );
                     }),
@@ -209,7 +210,10 @@ class _DeleteSearchBodyState extends State<DeleteSearchBody> {
       itemSize: 25.sp,
       autofocus: true,
       onChanged: (value) {
-        Provider.of<Words>(context, listen: false).filterMethod(value);
+        // Provider.of<Words>(context, listen: false).filterMethod(value);
+        setState(() {
+          _filterMethod(value);
+        });
       },
       style: const TextStyle(
         fontFamily: 'Poppins',

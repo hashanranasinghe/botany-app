@@ -66,7 +66,7 @@ class DrawerWidgetUser extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 330.h)),
+              Padding(padding: EdgeInsets.only(top: 340.h)),
               Stack(
                 children: [
                   Positioned(

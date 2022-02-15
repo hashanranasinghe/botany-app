@@ -180,7 +180,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 0.3.h)),
+              Padding(padding: EdgeInsets.only(top: 50.h)),
               Stack(
                 children: [
                   Positioned(

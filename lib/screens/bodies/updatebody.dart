@@ -4,7 +4,6 @@ import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -227,66 +226,64 @@ class _UpdateBodyState extends State<UpdateBody> {
       context,
       listen: false,
     ).findById(widget.id);
-    return Container(
-      child: Column(
-        children: [
-          TopScreenWidget(
-              scaffoldKey: widget.scaffoldKey,
-              topLeft: Padding(
-                padding: EdgeInsets.only(top: 30.h, right: 10.w),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.cancel)),
-              )),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Form(
-                  key: _form,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 150.h,
+    return Column(
+      children: [
+        TopScreenWidget(
+            scaffoldKey: widget.scaffoldKey,
+            topLeft: Padding(
+              padding: EdgeInsets.only(top: 30.h, right: 10.w),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(UpdateSearchScreen.routeName);
+                  },
+                  icon: const Icon(Icons.cancel)),
+            )),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Form(
+                key: _form,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 150.h,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Update',
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30.sp,
-                              ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Update',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30.sp,
                             ),
-                            _buildBotNameField(),
-                            _buildEnglishNameField(),
-                            ListTile(
-                              title: Row(
-                                children: <Widget>[
-                                  Expanded(child: (_buildCancelButton())),
-                                  Expanded(child: _buildUpdateButton()),
-                                ],
-                              ),
+                          ),
+                          _buildBotNameField(),
+                          _buildEnglishNameField(),
+                          ListTile(
+                            title: Row(
+                              children: <Widget>[
+                                Expanded(child: (_buildCancelButton())),
+                                Expanded(child: _buildUpdateButton()),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  )),
-            ),
+                    ),
+                  ],
+                )),
           ),
-          const Align(
-              alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
-        ],
-      ),
+        ),
+        const Align(
+            alignment: FractionalOffset.bottomCenter, child: WaveWidget()),
+      ],
     );
   }
 }

@@ -39,20 +39,20 @@ class _SplashScreenState extends State<SplashScreen> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
 
-
-      getValidationData().whenComplete(() async {
-        Timer(const Duration(seconds: 3), () {
-          if( _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ) {
-            connection(context);
-          } else if (finalEmail == null) {
-            Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-          } else {
-            Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
-          }
-        });
+    getValidationData().whenComplete(() async {
+      Timer(const Duration(seconds: 3), () {
+        if (_connectionStatus.toString() == "ConnectivityResult.bluetooth" ||
+            _connectionStatus.toString() == "ConnectivityResult.none") {
+          connection(context);
+        } else if (finalEmail == null) {
+          Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+        } else {
+          Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+        }
       });
-
+    });
   }
+
 
   @override
   void dispose() {
@@ -82,47 +82,49 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  Future getValidationData() async{
-    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences = await SharedPreferences
+        .getInstance();
     var obtainEmail = sharedPreferences.getString('email');
     setState(() {
-      finalEmail  =obtainEmail;
+      finalEmail = obtainEmail;
     });
   }
 
-  void connection(BuildContext context){
+  void connection(BuildContext context) {
     showCupertinoDialog(context: context,
-        builder:(context) => CupertinoAlertDialog(
-          content: Text('No Internet Connection',
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 15.sp,
-            ),),
-          actions: [
-            CupertinoDialogAction(
-              child: Text('Ok',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 15.sp,
-                  ),),
-              onPressed: () {
-                setState(() {
-                  Navigator.of(context).pushReplacementNamed(SplashScreen.routName);
-                });
-
-              },),
-            CupertinoDialogAction(
-              child: const Text('Settings',
+        builder: (context) =>
+            CupertinoAlertDialog(
+              content: Text('No Internet Connection',
                 style: TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 20,
+                  fontSize: 15.sp,
                 ),),
-              onPressed: () {
-                AppSettings.openWIFISettings();
-              },),
+              actions: [
+                CupertinoDialogAction(
+                  child: Text('Ok',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 15.sp,
+                    ),),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.of(context).pushReplacementNamed(
+                          SplashScreen.routName);
+                    });
+                  },),
+                CupertinoDialogAction(
+                  child: const Text('Settings',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                    ),),
+                  onPressed: () {
+                    AppSettings.openWIFISettings();
+                  },),
 
-          ],
-        ));
+              ],
+            ));
   }
 
   @override
@@ -150,10 +152,10 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-}
 
-@override
-Widget build(BuildContext context) {
-  // TODO: implement build
-  throw UnimplementedError();
+  // @override
+  // Widget build(BuildContext context) {
+  //   // TODO: implement build
+  //   throw UnimplementedError();
+  // }
 }

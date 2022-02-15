@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:string_extensions/string_extensions.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = 'search_screen';
@@ -342,7 +343,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 width: double.infinity,
                               )
                             : Container(
-                                height: 230.h,
+                                height: 260.h,
                                 margin:
                                     EdgeInsets.only(left: 15.w, right: 15.w),
                                 padding: const EdgeInsets.only(top: 0),
@@ -363,6 +364,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           child: ListTile(
                                             onTap: () {
                                               setState(() {
+
                                                 if (_toggleIndex == 0) {
                                                   sinhalaWord =
                                                       _filterdWords[index]
@@ -370,13 +372,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
                                                   typedText =
                                                       _filterdWords[index]
-                                                          .engName!;
+                                                          .engName!.capitalize;
                                                   searchController.text =
                                                       typedText!;
                                                 } else {
                                                   sinhalaWord =
                                                       _filterdWords[index]
-                                                          .engName!;
+                                                          .engName!.capitalize;
                                                   typedText =
                                                       _filterdWords[index]
                                                           .sinName!;
@@ -387,7 +389,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             },
                                             title: _toggleIndex == 0
                                                 ? Text(
-                                                    '${_filterdWords[index].engName}',
+                                                    '${_filterdWords[index].engName.capitalize}',
                                                     style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontSize: 18.sp,

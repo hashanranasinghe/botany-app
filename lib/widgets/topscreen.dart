@@ -29,7 +29,7 @@ class TopScreenWidget extends StatelessWidget {
                 iconSize: 30.sp,
               ),
             ),
-            Container(
+            SizedBox(
               height: 75.h,
               width: 100.w,
               child: Center(child: Image.asset('assets/images/logo_1.png')),
