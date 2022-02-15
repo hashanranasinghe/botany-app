@@ -14,8 +14,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-
 import 'models/googlesignin.dart';
 import 'screens/resetscreen.dart';
 import 'screens/verificationemailscreen.dart';
@@ -60,6 +58,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: const SplashScreen(),
+
           builder: (context, widget) {
             ScreenUtil.setContext(context);
             return MediaQuery(

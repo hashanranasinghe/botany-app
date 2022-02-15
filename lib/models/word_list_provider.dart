@@ -1,6 +1,5 @@
 import 'package:botanyapp/models/http_ex.dart';
 import 'package:botanyapp/models/word.dart';
-import 'package:botanyapp/screens/logincomponents/loginbody.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -42,7 +41,7 @@ class Words extends ChangeNotifier {
       _wordslist.add(newWord);
       notifyListeners();
     } catch (err) {
-      throw err;
+      rethrow;
     }
   }
 
@@ -89,7 +88,7 @@ class Words extends ChangeNotifier {
       _wordslist[prodIndex] = newProduct;
       notifyListeners();
     } else {
-      print('...');
+      //print('...');
     }
   }
 

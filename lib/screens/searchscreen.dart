@@ -3,6 +3,7 @@ import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/widgets/drawer_widget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,6 +36,8 @@ class _SearchScreenState extends State<SearchScreen> {
   FocusNode focusNodeButton2 = FocusNode();
   List<FocusNode>? focusToggle;
 
+  final user = FirebaseAuth.instance.currentUser;
+
   @override
   void didChangeDependencies() {
     if (_isInit) {
@@ -59,6 +62,12 @@ class _SearchScreenState extends State<SearchScreen> {
     super.didChangeDependencies();
   }
 
+  Future<void> shareEmail() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString('email', user!.email.toString());
+  }
+
   void _filterMethod(value) {
     setState(() {
       _filterdWords = _words
@@ -70,10 +79,12 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   @override
-  void initState() {
+  void initState(){
     // TODO: implement initState
     super.initState();
     focusToggle = [focusNodeButton1, focusNodeButton2];
+    shareEmail();
+
   }
 
   @override
@@ -87,6 +98,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final words = Provider.of<Words>(context);
+
+
 
     return Scaffold(
       key: _scaffoldKey,

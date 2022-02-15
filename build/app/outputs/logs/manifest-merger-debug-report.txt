@@ -49,11 +49,13 @@ MERGED from [:app_settings] F:\Flutter\botanyapp\build\app_settings\intermediate
 MERGED from [:fluttertoast] F:\Flutter\botanyapp\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:webview_flutter_android] F:\Flutter\botanyapp\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\5585ea124cbf04e50215dfdc48fd430c\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\c8b1e7721b03d46773feeb7220de7bbc\jetified-firebase-appcheck-interop-16.0.0-beta02\AndroidManifest.xml:15:1-26:12
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\e90b6bdc40929ac01e172d4b5a24e743\jetified-firebase-common-20.0.0\AndroidManifest.xml:15:1-40:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\25f56d1e4dae5eb66f6510be5863aeb2\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\108a45c1e548d0cca0c3cbd2051911d9\jetified-play-services-auth-20.0.1\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\21206dcaa6ccd5a1b056d7a97b0a571f\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\a9d7fe042d280dd82d00b36eae0bdae5\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:2:1-7:12
@@ -154,6 +156,8 @@ MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermed
 MERGED from [:google_sign_in] F:\Flutter\botanyapp\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_plus] F:\Flutter\botanyapp\build\connectivity_plus\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] F:\Flutter\botanyapp\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] F:\Flutter\botanyapp\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\6a9b540f13889258a0cd452a540cd610\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\7a02a3909224631f5e4212f503e0e125\jetified-firebase-firestore-24.0.1\AndroidManifest.xml:7:5-9:41
@@ -164,6 +168,8 @@ MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] C:\Use
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\c8b1e7721b03d46773feeb7220de7bbc\jetified-firebase-appcheck-interop-16.0.0-beta02\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\e90b6bdc40929ac01e172d4b5a24e743\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\e90b6bdc40929ac01e172d4b5a24e743\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\25f56d1e4dae5eb66f6510be5863aeb2\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\25f56d1e4dae5eb66f6510be5863aeb2\webkit-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\108a45c1e548d0cca0c3cbd2051911d9\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\108a45c1e548d0cca0c3cbd2051911d9\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\21206dcaa6ccd5a1b056d7a97b0a571f\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:20:5-44

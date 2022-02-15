@@ -1,5 +1,6 @@
 import 'package:botanyapp/models/word.dart';
 import 'package:botanyapp/models/word_list_provider.dart';
+import 'package:botanyapp/screens/addscreen.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
 
@@ -71,7 +72,7 @@ class _AddBodyState extends State<AddBody> {
     // });
     Fluttertoast.showToast(msg: "Add to the word list",
         toastLength: Toast.LENGTH_LONG);
-    Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+    Navigator.of(context).pushReplacementNamed(AddScreen.routeName);
 
 
   }

@@ -1,13 +1,15 @@
 import 'dart:async';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app_settings/app_settings.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 String? finalEmail;
 
@@ -26,6 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
+  late WebViewController _webViewController;
 
   @override
   void initState() {
@@ -36,15 +39,19 @@ class _SplashScreenState extends State<SplashScreen> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
 
+
       getValidationData().whenComplete(() async {
         Timer(const Duration(seconds: 3), () {
-          if (finalEmail == null) {
+          if( _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ) {
+            connection(context);
+          } else if (finalEmail == null) {
             Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
           } else {
             Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
           }
         });
       });
+
   }
 
   @override
@@ -72,10 +79,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     setState(() {
       _connectionStatus = result;
-      if( _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ){
-        connection(context);
-      }
-
     });
   }
 
@@ -90,20 +93,23 @@ class _SplashScreenState extends State<SplashScreen> {
   void connection(BuildContext context){
     showCupertinoDialog(context: context,
         builder:(context) => CupertinoAlertDialog(
-          content: const Text('No Internet Connection',
+          content: Text('No Internet Connection',
             style: TextStyle(
               fontFamily: 'Poppins',
-              fontSize: 20,
+              fontSize: 15.sp,
             ),),
           actions: [
             CupertinoDialogAction(
-              child: const Text('No',
+              child: Text('Ok',
                   style: TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 20,
+                    fontSize: 15.sp,
                   ),),
               onPressed: () {
-                Navigator.pop(context);
+                setState(() {
+                  Navigator.of(context).pushReplacementNamed(SplashScreen.routName);
+                });
+
               },),
             CupertinoDialogAction(
               child: const Text('Settings',
@@ -112,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   fontSize: 20,
                 ),),
               onPressed: () {
-                AppSettings.openDataRoamingSettings();
+                AppSettings.openWIFISettings();
               },),
 
           ],
@@ -129,12 +135,13 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
 
             // logo here
-            Image.asset(
-              'assets/images/logo_1.png',
+            SizedBox(
+              height: 200.h,
+              width: 200.w,
+              child: Image.asset(
+                'assets/images/logo_1.png',
+              ),
             ),
-            // const SizedBox(
-            // height: 20,
-            // ),
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
             ),

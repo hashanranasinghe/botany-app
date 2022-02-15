@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class UpdateSearchBody extends StatefulWidget {
-  UpdateSearchBody({Key? key}) : super(key: key);
+  const UpdateSearchBody({Key? key}) : super(key: key);
 
   @override
   State<UpdateSearchBody> createState() => _UpdateSearchBodyState();

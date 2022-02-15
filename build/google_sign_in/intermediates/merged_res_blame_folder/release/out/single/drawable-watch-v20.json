@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "F:\\Flutter\\botanyapp\\build\\google_sign_in\\intermediates\\res\\merged\\release\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml",
+        "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\108a45c1e548d0cca0c3cbd2051911d9\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "F:\\Flutter\\botanyapp\\build\\google_sign_in\\intermediates\\res\\merged\\release\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml",
+        "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\108a45c1e548d0cca0c3cbd2051911d9\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "F:\\Flutter\\botanyapp\\build\\google_sign_in\\intermediates\\res\\merged\\release\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml",
+        "source": "C:\\Users\\ACER\\.gradle\\caches\\transforms-2\\files-2.1\\108a45c1e548d0cca0c3cbd2051911d9\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
+    }
+]
