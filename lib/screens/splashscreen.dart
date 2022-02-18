@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app_settings/app_settings.dart';
@@ -15,17 +17,14 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
   static const routName = 'splash-screen';
 
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
-
 
   @override
   void initState() {
@@ -36,15 +35,17 @@ class _SplashScreenState extends State<SplashScreen> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
 
-      getValidationData().whenComplete(() async {
-        Timer(const Duration(seconds: 3), () {
-          if (finalEmail == null) {
-            Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-          } else {
-            Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
-          }
-        });
+    getValidationData().whenComplete(() async {
+      Timer(const Duration(seconds: 2), () {
+        if (finalEmail == null) {
+          Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+          
+        } else {
+          Navigator.of(context).pushReplacementNamed(SearchScreen.routeName);
+         
+        }
       });
+    });
   }
 
   @override
@@ -72,65 +73,75 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     setState(() {
       _connectionStatus = result;
-      if( _connectionStatus.toString() == "ConnectivityResult.bluetooth" || _connectionStatus.toString() == "ConnectivityResult.none"  ){
+      if (_connectionStatus.toString() == "ConnectivityResult.bluetooth" ||
+          _connectionStatus.toString() == "ConnectivityResult.none") {
         connection(context);
       }
-
     });
   }
 
-  Future getValidationData() async{
-    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
     var obtainEmail = sharedPreferences.getString('email');
     setState(() {
-      finalEmail  =obtainEmail;
+      finalEmail = obtainEmail;
     });
   }
 
-  void connection(BuildContext context){
-    showCupertinoDialog(context: context,
-        builder:(context) => CupertinoAlertDialog(
-          content: const Text('No Internet Connection',
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 20,
-            ),),
-          actions: [
-            CupertinoDialogAction(
-              child: const Text('No',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                  ),),
-              onPressed: () {
-                Navigator.pop(context);
-              },),
-            CupertinoDialogAction(
-              child: const Text('Settings',
+  void connection(BuildContext context) {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) => CupertinoAlertDialog(
+              content: const Text(
+                'No Internet Connection',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
-                ),),
-              onPressed: () {
-                AppSettings.openDataRoamingSettings();
-              },),
-
-          ],
-        ));
+                ),
+              ),
+              actions: [
+                CupertinoDialogAction(
+                  child: const Text(
+                    'No',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                CupertinoDialogAction(
+                  child: const Text(
+                    'Settings',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                    ),
+                  ),
+                  onPressed: () {
+                    AppSettings.openDataRoamingSettings();
+                  },
+                ),
+              ],
+            ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             // logo here
-            Image.asset(
-              'assets/images/logo_1.png',
+            SizedBox(
+              width: 250.w,
+              child: Image.asset(
+                'assets/images/logo_1.png',
+              ),
             ),
             // const SizedBox(
             // height: 20,
@@ -143,10 +154,4 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  // TODO: implement build
-  throw UnimplementedError();
 }

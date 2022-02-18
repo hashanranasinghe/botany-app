@@ -106,7 +106,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
                                           .pushReplacementNamed(
                                               UpdateScreen.routeName,
                                               arguments:
-                                                  words.wordslist[index].id);
+                                                  _filterdWords[index].id);
                                     },
                                     icon: Icon(
                                       Icons.edit,
