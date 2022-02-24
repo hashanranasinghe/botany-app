@@ -233,9 +233,7 @@ class Validator {
     RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
     if (passwordValue.isEmpty) {
       return "Password Cannot be Empty";
-    } else if (!regex.hasMatch(passwordValue)) {
-      return "Invalid Password";
-    }else if(passwordValue.length < 6){
+    } else if(passwordValue.length < 6){
       return "Enter valid Password.(Min. 6 characters)";
     }
     return null;

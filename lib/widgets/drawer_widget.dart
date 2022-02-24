@@ -21,180 +21,178 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getValidationData();
-
   }
 
-  Future getValidationData() async{
-    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
     var obtainEmail = sharedPreferences.getString('email');
     setState(() {
-      finalEmail  =obtainEmail;
+      finalEmail = obtainEmail;
     });
   }
 
-
-
   @override
-  Widget build(BuildContext context) => finalEmail!= "zillion.shopper@gmail.com"
+  Widget build(BuildContext context) => (finalEmail !=
+              "zillion.shopper@gmail.com")
+
       ? const DrawerWidgetUser()
       : Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-            child: Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage('assets/images/menu.jpg'),
-                fit: BoxFit.fill,
-              )),
-            ),
-          ),
-          Column(
-            children: <Widget>[
-              ListTile(
-                onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(SearchScreen.routeName);
-                },
-                leading: const Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: AssetImage('assets/images/menu.jpg'),
+                    fit: BoxFit.fill,
+                  )),
                 ),
-                title: Text(
-                  'Home',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+              ),
+              Column(
+                children: <Widget>[
+                  ListTile(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(SearchScreen.routeName);
+                    },
+                    leading: const Icon(
+                      Icons.home_outlined,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const Divider(
-                thickness: 2,
-              ),
-              // ignore: prefer_const_constructors
-              ListTile(
-                onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(AddScreen.routeName);
-                },
-                leading: const Icon(
-                  Icons.add_box_outlined,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  'Add',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                  const Divider(
+                    thickness: 2,
                   ),
-                ),
-              ),
-              const Divider(
-                thickness: 2,
-              ),
+                  // ignore: prefer_const_constructors
+                  ListTile(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(AddScreen.routeName);
+                    },
+                    leading: const Icon(
+                      Icons.add_box_outlined,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      'Add',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    thickness: 2,
+                  ),
 
-              ListTile(
-                onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(UpdateSearchScreen.routeName);
-                },
-                leading: const Icon(Icons.update_outlined, color: Colors.black),
-                title: Text(
-                  'Update',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                  ListTile(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(UpdateSearchScreen.routeName);
+                    },
+                    leading:
+                        const Icon(Icons.update_outlined, color: Colors.black),
+                    title: Text(
+                      'Update',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const Divider(
-                thickness: 2,
-              ),
+                  const Divider(
+                    thickness: 2,
+                  ),
 
-              ListTile(
-                onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(DeleteSearchScreen.routeName);
-                },
-                leading: const Icon(Icons.delete_outline_outlined,
-                    color: Colors.black),
-                title: Text(
-                  'Delete',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                  ListTile(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(DeleteSearchScreen.routeName);
+                    },
+                    leading: const Icon(Icons.delete_outline_outlined,
+                        color: Colors.black),
+                    title: Text(
+                      'Delete',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const Divider(
-                thickness: 2,
-              ),
+                  const Divider(
+                    thickness: 2,
+                  ),
 
-
-              ListTile(
-                onTap: () {
-                  Navigator.of(context).pushNamed(DetailsScreen.routeName);
-                },
-                leading: const Icon(Icons.details_outlined,
-                    color: Colors.black),
-                title: Text(
-                  'Details',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                  ListTile(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(DetailsScreen.routeName);
+                    },
+                    leading:
+                        const Icon(Icons.details_outlined, color: Colors.black),
+                    title: Text(
+                      'Details',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const Divider(
-                thickness: 2,
-              ),
-              ListTile(
-                onTap: () async {
-                  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                  sharedPreferences.remove('email');
-                  Navigator.of(context)
-                      .pushReplacementNamed(LoginScreen.routeName);
-                },
-                leading: const Icon(Icons.logout_outlined,
-                    color: Colors.black),
-                title: Text(
-                  'Log Out',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
+                  const Divider(
+                    thickness: 2,
                   ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 0.3.h)),
-              Stack(
-                children: [
-                  Positioned(
-                    child: SizedBox(
-                        height: 150.h,
-                        width: 150.w,
-                        child: Image.asset('assets/images/logo_1.png')),
+                  ListTile(
+                    onTap: () async {
+                      final SharedPreferences sharedPreferences =
+                          await SharedPreferences.getInstance();
+                      sharedPreferences.remove('email');
+                      Navigator.of(context)
+                          .pushReplacementNamed(LoginScreen.routeName);
+                    },
+                    leading:
+                        const Icon(Icons.logout_outlined, color: Colors.black),
+                    title: Text(
+                      'Log Out',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 50.h)),
+                  Stack(
+                    children: [
+                      Positioned(
+                        child: SizedBox(
+                            height: 150.h,
+                            width: 150.w,
+                            child: Image.asset('assets/images/logo_1.png')),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
-        ],
-      ),
-    );
-
+        );
 }

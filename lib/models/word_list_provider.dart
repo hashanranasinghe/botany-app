@@ -1,6 +1,5 @@
 import 'package:botanyapp/models/http_ex.dart';
 import 'package:botanyapp/models/word.dart';
-import 'package:botanyapp/screens/logincomponents/loginbody.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,6 +10,7 @@ class Words extends ChangeNotifier {
     // Word(engName: 'Calyx', sinName: 'මණිය'),
   ];
   List<Word> get wordslist {
+
     return [..._wordslist];
   }
 
@@ -42,7 +42,7 @@ class Words extends ChangeNotifier {
       _wordslist.add(newWord);
       notifyListeners();
     } catch (err) {
-      throw err;
+      rethrow;
     }
   }
 
@@ -65,7 +65,12 @@ class Words extends ChangeNotifier {
           sinName: wordData['sinName'],
         ));
       });
+      loadedWords.sort((a, b){ //sorting in ascending order
+        return a.engName.toString().toLowerCase().compareTo(b.engName.toString().toLowerCase());
+      });
+
       _wordslist = loadedWords;
+
       notifyListeners();
     } catch (e) {
       rethrow;
@@ -89,7 +94,7 @@ class Words extends ChangeNotifier {
       _wordslist[prodIndex] = newProduct;
       notifyListeners();
     } else {
-      print('...');
+      //print('...');
     }
   }
 

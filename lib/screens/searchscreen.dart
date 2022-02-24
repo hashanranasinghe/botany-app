@@ -3,12 +3,14 @@ import 'package:botanyapp/models/word_list_provider.dart';
 import 'package:botanyapp/widgets/drawer_widget.dart';
 import 'package:botanyapp/widgets/topscreen.dart';
 import 'package:botanyapp/widgets/wavewidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:string_extensions/string_extensions.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = 'search_screen';
@@ -35,6 +37,8 @@ class _SearchScreenState extends State<SearchScreen> {
   FocusNode focusNodeButton2 = FocusNode();
   List<FocusNode>? focusToggle;
 
+  final user = FirebaseAuth.instance.currentUser;
+
   @override
   void didChangeDependencies() {
     if (_isInit) {
@@ -59,6 +63,12 @@ class _SearchScreenState extends State<SearchScreen> {
     super.didChangeDependencies();
   }
 
+  Future<void> shareEmail() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString('email', user!.email.toString());
+  }
+
   void _filterMethod(value) {
     setState(() {
       _filterdWords = _words
@@ -70,10 +80,12 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   @override
-  void initState() {
+  void initState(){
     // TODO: implement initState
     super.initState();
     focusToggle = [focusNodeButton1, focusNodeButton2];
+    shareEmail();
+
   }
 
   @override
@@ -87,6 +99,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final words = Provider.of<Words>(context);
+
+
 
     return Scaffold(
       key: _scaffoldKey,
@@ -329,7 +343,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 width: double.infinity,
                               )
                             : Container(
-                                height: 230.h,
+                                height: 260.h,
                                 margin:
                                     EdgeInsets.only(left: 15.w, right: 15.w),
                                 padding: const EdgeInsets.only(top: 0),
@@ -350,6 +364,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           child: ListTile(
                                             onTap: () {
                                               setState(() {
+
                                                 if (_toggleIndex == 0) {
                                                   sinhalaWord =
                                                       _filterdWords[index]
@@ -357,13 +372,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
                                                   typedText =
                                                       _filterdWords[index]
-                                                          .engName!;
+                                                          .engName!.capitalize;
                                                   searchController.text =
                                                       typedText!;
                                                 } else {
                                                   sinhalaWord =
                                                       _filterdWords[index]
-                                                          .engName!;
+                                                          .engName!.capitalize;
                                                   typedText =
                                                       _filterdWords[index]
                                                           .sinName!;
@@ -374,7 +389,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             },
                                             title: _toggleIndex == 0
                                                 ? Text(
-                                                    '${_filterdWords[index].engName}',
+                                                    '${_filterdWords[index].engName.capitalize}',
                                                     style: TextStyle(
                                                       fontFamily: 'Poppins',
                                                       fontSize: 18.sp,

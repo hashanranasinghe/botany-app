@@ -1,9 +1,5 @@
-import 'package:botanyapp/screens/addscreen.dart';
-import 'package:botanyapp/screens/deletesearchscreen.dart';
 import 'package:botanyapp/screens/loginscreen.dart';
 import 'package:botanyapp/screens/searchscreen.dart';
-import 'package:botanyapp/screens/updatescreen.dart';
-import 'package:botanyapp/screens/updatesearchscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerWidgetUser extends StatelessWidget {
   const DrawerWidgetUser({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +41,7 @@ class DrawerWidgetUser extends StatelessWidget {
                     color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
@@ -63,16 +57,16 @@ class DrawerWidgetUser extends StatelessWidget {
                 },
                 leading: const Icon(Icons.logout_outlined,
                     color: Colors.black),
-                title: const Text(
+                title: Text(
                   'Log Out',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: height * 0.2)),
+              Padding(padding: EdgeInsets.only(top: 340.h)),
               Stack(
                 children: [
                   Positioned(

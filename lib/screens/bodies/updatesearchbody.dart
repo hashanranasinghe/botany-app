@@ -9,9 +9,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:string_extensions/string_extensions.dart';
 
 class UpdateSearchBody extends StatefulWidget {
-  UpdateSearchBody({Key? key}) : super(key: key);
+  const UpdateSearchBody({Key? key}) : super(key: key);
 
   @override
   State<UpdateSearchBody> createState() => _UpdateSearchBodyState();
@@ -62,7 +63,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
                         Navigator.pushReplacementNamed(
                             context, SearchScreen.routeName);
                       },
-                      icon: Icon(Icons.home)),
+                      icon: const Icon(Icons.home)),
                 )),
             Container(
               padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 20.h),
@@ -78,7 +79,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
               height: 70.h,
             ),
             Container(
-              height: 250.h,
+              height: 350.h,
               margin: EdgeInsets.only(left: 25.w, right: 25.w),
               padding: const EdgeInsets.only(top: 0),
               decoration: BoxDecoration(
@@ -89,7 +90,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
               ),
               child: _isLoading
                   ? Container(
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                       width: 50.w,
                     )
                   : ClipRRect(
@@ -108,11 +109,11 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
                                               arguments:
                                                   _filterdWords[index].id);
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.edit,
                                       color: Colors.black,
                                     )),
-                                title: Text('${_filterdWords[index].engName}'),
+                                title: Text('${_filterdWords[index].engName.capitalize}'),
                               ),
                             );
                           }),
@@ -135,7 +136,7 @@ class _UpdateSearchBodyState extends State<UpdateSearchBody> {
       padding: EdgeInsets.only(bottom: 10.h),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.update_outlined,
             color: Colors.black,
           ),

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class SignUpScreen extends StatefulWidget {
@@ -37,6 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final googleProvider = Provider.of<GoogleSignInProvider>(context,listen: false);
     return Scaffold(
         body: Column(
       children: [
@@ -126,11 +128,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 35.h,
                         child: GestureDetector(
-                          onTap: (){
-                            final googleProvider = Provider.of<GoogleSignInProvider>(context,listen: false);
+                          onTap: () async {
+
+                            final SharedPreferences sharedPreferences =
+                            await SharedPreferences.getInstance();
+
+                              sharedPreferences.setString('email', emailController.text);
                             googleProvider.googleLogin().whenComplete(() =>
                                 Navigator.of(context).pushReplacementNamed(SearchScreen.routeName)
-
                             );
                           },
                           child: const Image(
