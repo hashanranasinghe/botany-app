@@ -80,12 +80,11 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   @override
-  void initState(){
+  void initState() {
     // TODO: implement initState
     super.initState();
     focusToggle = [focusNodeButton1, focusNodeButton2];
     shareEmail();
-
   }
 
   @override
@@ -99,8 +98,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final words = Provider.of<Words>(context);
-
-
 
     return Scaffold(
       key: _scaffoldKey,
@@ -262,17 +259,23 @@ class _SearchScreenState extends State<SearchScreen> {
                                   },
                                   onSubmitted: (value) {
                                     try {
-                                      final result =
-                                          words.wordslist.firstWhere((element) {
-                                        if (_toggleIndex == 0) {
-                                          return element.engName == value;
-                                        }
-                                        return element.sinName == value;
-                                      }
-
-                                              // element.engName == value
-                                              );
                                       setState(() {
+                                        final result =
+                                            _words.firstWhere((element) {
+                                          if (_toggleIndex == 0) {
+                                            return element.engName
+                                                    ?.toLowerCase()
+                                                    .trim() ==
+                                                value.toLowerCase().trim();
+                                          } else {
+                                            return element.sinName?.trim() ==
+                                                value.trim();
+                                          }
+                                        }
+
+                                                // element.engName == value
+                                                );
+
                                         if (_toggleIndex == 0) {
                                           sinhalaWord = result.sinName;
                                           typedText = result.engName;
@@ -285,7 +288,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                       showDialog(
                                         context: context,
                                         builder: (context) => AlertDialog(
-                                          title: const Text('No maching word found!'),
+                                          title: const Text(
+                                              'No maching word found!'),
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
@@ -364,7 +368,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                           child: ListTile(
                                             onTap: () {
                                               setState(() {
-
                                                 if (_toggleIndex == 0) {
                                                   sinhalaWord =
                                                       _filterdWords[index]
@@ -372,13 +375,15 @@ class _SearchScreenState extends State<SearchScreen> {
 
                                                   typedText =
                                                       _filterdWords[index]
-                                                          .engName!.capitalize;
+                                                          .engName!
+                                                          .capitalize;
                                                   searchController.text =
                                                       typedText!;
                                                 } else {
                                                   sinhalaWord =
                                                       _filterdWords[index]
-                                                          .engName!.capitalize;
+                                                          .engName!
+                                                          .capitalize;
                                                   typedText =
                                                       _filterdWords[index]
                                                           .sinName!;
@@ -428,7 +433,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 },
                 child: Text(
                   'Clear',
-                  style: TextStyle(fontSize: 15.sp, color: const Color(0Xff012766)),
+                  style: TextStyle(
+                      fontSize: 15.sp, color: const Color(0Xff012766)),
                 ),
               ),
             ),

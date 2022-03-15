@@ -10,7 +10,6 @@ class Words extends ChangeNotifier {
     // Word(engName: 'Calyx', sinName: 'මණිය'),
   ];
   List<Word> get wordslist {
-
     return [..._wordslist];
   }
 
@@ -65,8 +64,12 @@ class Words extends ChangeNotifier {
           sinName: wordData['sinName'],
         ));
       });
-      loadedWords.sort((a, b){ //sorting in ascending order
-        return a.engName.toString().toLowerCase().compareTo(b.engName.toString().toLowerCase());
+      loadedWords.sort((a, b) {
+        //sorting in ascending order
+        return a.engName
+            .toString()
+            .toLowerCase()
+            .compareTo(b.engName.toString().toLowerCase());
       });
 
       _wordslist = loadedWords;

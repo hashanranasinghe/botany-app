@@ -50,8 +50,8 @@ class _VerificationEmailScreenState extends State<VerificationEmailScreen> {
     });
 
     if(isEmailVerify) timer?.cancel();
-    Fluttertoast.showToast(msg: 'Signup Successfully',
-    toastLength: Toast.LENGTH_LONG);
+    // Fluttertoast.showToast(msg: 'Signup Successfully',
+    // toastLength: Toast.LENGTH_LONG);
   }
   Future sendVerificationEmail() async{
     try {
